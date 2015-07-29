@@ -72,8 +72,8 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP1, "p1"));
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP2, "p2"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACPoke, "poke"));
-            Commands.ChatCommands.Add(new Command("facommands.admin", FACSPoke, "spoke"));
-            Commands.ChatCommands.Add(new Command("facommands.admin", FACStab, "stab"));
+            Commands.ChatCommands.Add(new Command("facommands.spoke", FACSPoke, "spoke"));
+            Commands.ChatCommands.Add(new Command("facommands.stab", FACStab, "stab"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACHug, "hug"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACLick, "lick"));
             Commands.ChatCommands.Add(new Command("facommands.rape", FACRape, "rape"));
@@ -81,8 +81,8 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.fun", FACPlant, "faceplant"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACLove, "love"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACKiss, "kiss"));
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACSlap, "slapall"));
-            Commands.ChatCommands.Add(new Command("facommands.admin", FACGift, "gift"));
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACSlap, "slapall"));
+            Commands.ChatCommands.Add(new Command("facommands.gift", FACGift, "gift"));
             Commands.ChatCommands.Add(new Command("facommands.staff", FACUI, "uinfo"));
             Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo"));
         }
