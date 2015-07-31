@@ -111,7 +111,7 @@ namespace FACommands
 
         private void FACSlay(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
+            if (args.Parameters.Count != 2)
             {
                 args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /slay <player> <reason>");
             }
@@ -135,11 +135,9 @@ namespace FACommands
                 else
                 {
                     TSPlayer tSPlayer = list[0];
-                    args.Parameters.RemoveAt(0);
-                    string reason = " " + string.Join(" ", args.Parameters);
-
-                    NetMessage.SendData(26, -1, -1, reason, tSPlayer.Index, 0f, 15000);
-                    args.Player.SendSuccessMessage("You just slain {0}.", tSPlayer.Name);
+                    string reason = " " + string.Join(" ", args.Parameters.Skip(1));
+                    NetMessage.SendData((int)26, -1, -1, reason, tSPlayer.Index, 0f, 15000);
+                    args.Player.SendSuccessMessage("You just slayed {0}.", tSPlayer.Name);
                 }
             }
         }
