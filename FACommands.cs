@@ -111,7 +111,7 @@ namespace FACommands
 
         private void FACSlay(CommandArgs args)
         {
-            if (args.Parameters.Count != 2)
+            if (args.Parameters.Count < 2)
             {
                 args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /slay <player> <reason>");
             }
