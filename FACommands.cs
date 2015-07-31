@@ -71,12 +71,13 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.staff", FACClear, "ca"));
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP1, "p1"));
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP2, "p2"));
+            Commands.ChatCommands.Add(new Command("facommands.slay", FACSlay, "slay"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACPoke, "poke"));
             Commands.ChatCommands.Add(new Command("facommands.spoke", FACSPoke, "spoke"));
             Commands.ChatCommands.Add(new Command("facommands.stab", FACStab, "stab"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACHug, "hug"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACLick, "lick"));
-            Commands.ChatCommands.Add(new Command("facommands.rape", FACRape, "rape"));
+            Commands.ChatCommands.Add(new Command("facommands.disturb", FACDisturb, "disturb"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACPalm, "facepalm"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACPlant, "faceplant"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACLove, "love"));
@@ -108,7 +109,42 @@ namespace FACommands
 			Commands.HandleCommand(args.Player, "/clear projectile 100000");
 		}
 
-		private void FACPoke(CommandArgs args)
+        private void FACSlay(CommandArgs args)
+        {
+            if (args.Parameters.Count != 1)
+            {
+                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /slay <player> <reason>");
+            }
+            else if (args.Parameters[0].Length == 0)
+            {
+                args.Player.SendErrorMessage("Invalid player!");
+            }
+            else
+            {
+                string text = args.Parameters[0];
+                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                if (list.Count == 0)
+                {
+                    args.Player.SendErrorMessage("Invalid player!");
+                }
+                else if (list.Count > 1)
+                {
+                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                     select p.Name);
+                }
+                else
+                {
+                    TSPlayer tSPlayer = list[0];
+                    args.Parameters.RemoveAt(0);
+                    string reason = " " + string.Join(" ", args.Parameters);
+
+                    NetMessage.SendData(26, -1, -1, reason, tSPlayer.Index, 0f, 15000);
+                    args.Player.SendSuccessMessage("You just slain {0}.", tSPlayer.Name);
+                }
+            }
+        }
+
+        private void FACPoke(CommandArgs args)
 		{
 			if (args.Parameters.Count != 1)
 			{
@@ -596,11 +632,11 @@ namespace FACommands
 			}
 		}
 
-		private void FACRape(CommandArgs args)
+		private void FACDisturb(CommandArgs args)
 		{
 			if (args.Parameters.Count != 1)
 			{
-				args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /rape <player>");
+				args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /disturb <player>");
 			}
 			else if (args.Parameters[0].Length == 0)
 			{
@@ -621,8 +657,8 @@ namespace FACommands
 				}
 				else if (list[0].Group.Name == "superadmin" | list[0].Group.Name == "owner")
                 {
-					args.Player.SendErrorMessage("You cannot rape this player!");
-					TSPlayer.All.SendSuccessMessage("{0} tried to rape {1}! {1} dodged the attack!", new object[]
+					args.Player.SendErrorMessage("You cannot disturb this player!");
+					TSPlayer.All.SendSuccessMessage("{0} tried to disturb {1}! {1} dodged the attack!", new object[]
 					{
 						args.Player.Name,
 						list[0].Name
@@ -638,16 +674,16 @@ namespace FACommands
 					tSPlayer.SetBuff(103, 3600, false);
 					tSPlayer.SetBuff(115, 3600, false);
 					tSPlayer.SetBuff(120, 3600, false);
-					args.Player.SendInfoMessage("You raped {0}! You feel slightly better...", new object[]
+					args.Player.SendInfoMessage("You disturbed {0}! You feel slightly better...", new object[]
 					{
 						tSPlayer.Name
 					});
-					TSPlayer.All.SendSuccessMessage("{0} raped {1}! Is that blood?", new object[]
+					TSPlayer.All.SendSuccessMessage("{0} disturbed {1}! Is he angry now?", new object[]
 					{
 						args.Player.Name,
 						tSPlayer.Name
 					});
-                    TShock.Log.Info("{0} raped {1}.", new object[]
+                    TShock.Log.Info("{0} disturbed {1}.", new object[]
 					{
 						args.Player.Name,
 						tSPlayer.Name
