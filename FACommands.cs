@@ -67,12 +67,12 @@ namespace FACommands
 
 		private void OnInitialize(EventArgs args)
 		{
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACHistory, "h"));
+            Commands.ChatCommands.Add(new Command("facommands.staff", FACHistory, "h") { AllowServer = false, HelpText = "Short command for /history" });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACClear, "ca"));
-            Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP1, "p1"));
-            Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP2, "p2"));
-            Commands.ChatCommands.Add(new Command("facommands.npc", FACNPC, "npcr"));
-            Commands.ChatCommands.Add(new Command("facommands.obc", FACOBC, "obc"));
+            Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP1, "p1") { AllowServer = false, HelpText = "Short command for WorldEdit //point1" });
+            Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP2, "p2") { AllowServer = false, HelpText = "Short command for WorldEdit //point2" });
+            Commands.ChatCommands.Add(new Command("facommands.npc", FACNPC, "npcr") { AllowServer = false, HelpText = "Respawns all Town NPC's at your location." });
+            Commands.ChatCommands.Add(new Command("facommands.obc", FACOBC, "obc") { HelpText = "Owner Broadcast." });
             Commands.ChatCommands.Add(new Command("facommands.slay", FACSlay, "slay"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACPoke, "poke"));
             Commands.ChatCommands.Add(new Command("facommands.spoke", FACSPoke, "spoke"));
@@ -86,8 +86,8 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.fun", FACKiss, "kiss"));
             Commands.ChatCommands.Add(new Command("facommands.fun", FACSlap, "slapall"));
             Commands.ChatCommands.Add(new Command("facommands.gift", FACGift, "gift"));
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACUI, "uinfo"));
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo"));
+            Commands.ChatCommands.Add(new Command("facommands.staff", FACUI, "uinfo") { HelpText = "Lists detailed informations about players." });
+            Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { HelpText = "Lists detailed informations about banned players." });
         }
 
 		private void FACHistory(CommandArgs args)
