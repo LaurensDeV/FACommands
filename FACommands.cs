@@ -41,7 +41,7 @@ namespace FACommands
 		{
 			get
 			{
-				return new Version(1, 1, 3, 0);
+				return new Version(1, 1, 4, 0);
 			}
 		}
 
@@ -113,16 +113,16 @@ namespace FACommands
 
         private void FACNPC(CommandArgs args)
         {
-            int killcount = 0;
+            int killCount = 0;
             for (int i = 0; i < Main.npc.Length; i++)
             {
                 if (Main.npc[i].active && Main.npc[i].townNPC)
                 {
-                    TSPlayer.Server.StrikeNPC(i, 99999, 90f, 1);
-                    killcount++;
+                    TSPlayer.Server.StrikeNPC(i, 99999, 0f, 0);
+                    killCount++;
                 }
             }
-            TSPlayer.All.SendInfoMessage(string.Format("{0} killed {1} friendly NPCs and spawned all town NPCs.", args.Player.Name, killcount));
+            TSPlayer.All.SendInfoMessage(string.Format("{0} killed {1} friendly NPCs and spawned all town NPCs.", args.Player.Name, killCount));
             TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(19).type, TShock.Utils.GetNPCById(19).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
             TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(54).type, TShock.Utils.GetNPCById(54).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
             TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(209).type, TShock.Utils.GetNPCById(209).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
@@ -137,14 +137,14 @@ namespace FACommands
             TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(227).type, TShock.Utils.GetNPCById(227).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
             TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(208).type, TShock.Utils.GetNPCById(208).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
             TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(229).type, TShock.Utils.GetNPCById(229).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
-            TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(178).type, TShock.Utils.GetNPCById(142).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
+            TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(178).type, TShock.Utils.GetNPCById(178).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
             TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(353).type, TShock.Utils.GetNPCById(353).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
             TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(368).type, TShock.Utils.GetNPCById(368).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
             TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(160).type, TShock.Utils.GetNPCById(160).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
             TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(228).type, TShock.Utils.GetNPCById(228).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
             TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(108).type, TShock.Utils.GetNPCById(108).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
-            TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(369).type, TShock.Utils.GetNPCById(108).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
-            TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(441).type, TShock.Utils.GetNPCById(108).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
+            TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(369).type, TShock.Utils.GetNPCById(369).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
+            TSPlayer.Server.SpawnNPC(TShock.Utils.GetNPCById(441).type, TShock.Utils.GetNPCById(441).name, 1, args.Player.TileX, args.Player.TileY, 20, 20);
         }
 
         private void FACOBC(CommandArgs args)
