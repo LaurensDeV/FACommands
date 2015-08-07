@@ -9,7 +9,7 @@ using TShockAPI.DB;
 
 namespace FACommands
 {
-	[ApiVersion(1, 20)]
+	[ApiVersion(1, 21)]
 	public class FACommands : TerrariaPlugin
 	{
 

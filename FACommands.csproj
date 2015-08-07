@@ -26,18 +26,16 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data">
-      <HintPath>..\Reference\MySql.Data.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Reference\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="TerrariaServer">
-      <HintPath>..\..\..\..\Spiele\Terraria\API\Reference\TerrariaServer.exe</HintPath>
+      <HintPath>..\Reference\TerrariaServer.exe</HintPath>
     </Reference>
-    <Reference Include="TerrariaServer">
+    <Reference Include="TerrariaServer, Version=1.3.0.6, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Reference\TerrariaServer.exe</HintPath>
     </Reference>
     <Reference Include="TShockAPI">
