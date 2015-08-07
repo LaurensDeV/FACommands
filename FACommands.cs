@@ -41,7 +41,7 @@ namespace FACommands
 		{
 			get
 			{
-				return new Version(1, 1, 5);
+				return new Version(1, 1, 6);
 			}
 		}
 
@@ -68,24 +68,24 @@ namespace FACommands
 		private void OnInitialize(EventArgs args)
 		{
             Commands.ChatCommands.Add(new Command("facommands.staff", FACHistory, "h") { AllowServer = false, HelpText = "Short command for /history" });
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACClear, "ca"));
+            Commands.ChatCommands.Add(new Command("facommands.staff", FACClear, "ca") { HelpText = "Short command for clearing up items and projectiles." });
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP1, "p1") { AllowServer = false, HelpText = "Short command for WorldEdit //point1" });
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP2, "p2") { AllowServer = false, HelpText = "Short command for WorldEdit //point2" });
             Commands.ChatCommands.Add(new Command("facommands.npc", FACNPC, "npcr") { AllowServer = false, HelpText = "Respawns all Town NPC's at your location." });
             Commands.ChatCommands.Add(new Command("facommands.obc", FACOBC, "obc") { HelpText = "Owner Broadcast." });
-            Commands.ChatCommands.Add(new Command("facommands.slay", FACSlay, "slay"));
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACPoke, "poke"));
-            Commands.ChatCommands.Add(new Command("facommands.spoke", FACSPoke, "spoke"));
-            Commands.ChatCommands.Add(new Command("facommands.stab", FACStab, "stab"));
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACHug, "hug"));
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACLick, "lick"));
-            Commands.ChatCommands.Add(new Command("facommands.disturb", FACDisturb, "disturb"));
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACPalm, "facepalm"));
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACPlant, "faceplant"));
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACLove, "love"));
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACKiss, "kiss"));
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACSlap, "slapall"));
-            Commands.ChatCommands.Add(new Command("facommands.gift", FACGift, "gift"));
+            Commands.ChatCommands.Add(new Command("facommands.slay", FACSlay, "slay") { HelpText = "Slay them DOWN! ALL!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACPoke, "poke") { HelpText = "Give someone a lovely poke." });
+            Commands.ChatCommands.Add(new Command("facommands.spoke", FACSPoke, "spoke") { HelpText = "You shouldn't do that..." });
+            Commands.ChatCommands.Add(new Command("facommands.stab", FACStab, "stab") { HelpText = "Well, you should better run now!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACHug, "hug") { HelpText = "Awwwhhh how lovely!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACLick, "lick") { HelpText = "Ugh... are you serious?!" });
+            Commands.ChatCommands.Add(new Command("facommands.disturb", FACDisturb, "disturb") { HelpText = "They will catch you with theyr dusty sticks!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACPalm, "facepalm") { HelpText = "Perform a facepalm." });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACPlant, "faceplant") { HelpText = "Are you crazy?!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACLove, "love") { HelpText = "hum... this must be true love..." });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACKiss, "kiss") { HelpText = "RAAWWWRRRR! What next?!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACSlap, "slapall") { HelpText = "Dusty sticks incomming!" });
+            Commands.ChatCommands.Add(new Command("facommands.gift", FACGift, "gift") { HelpText = "If they were good!" });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACUI, "uinfo") { HelpText = "Lists detailed informations about players." });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { HelpText = "Lists detailed informations about banned players." });
         }
@@ -215,15 +215,11 @@ namespace FACommands
 				{
 					TSPlayer tSPlayer = list[0];
 					tSPlayer.DamagePlayer(1);
-					args.Player.SendInfoMessage("You poked {0}.", new object[]
+					args.Player.SendInfoMessage("You poked {0}. Uh oh... should you run now?", new object[]
 					{
 						tSPlayer.Name
 					});
-					TSPlayer.All.SendSuccessMessage("{0} poked {1}.", new object[]
-					{
-						args.Player.Name,
-						tSPlayer.Name
-					});
+                    TSPlayer.All.SendMessage(string.Format("{0} poked {1}. Well, that was lovely! :3", args.Player.Name, tSPlayer.Name), Color.LightSkyBlue);                    
 					TShock.Log.Info("{0} poked {1}.", new object[]
 					{
 						args.Player.Name,
@@ -260,15 +256,11 @@ namespace FACommands
 				{
 					TSPlayer tSPlayer = list[0];
 					tSPlayer.DamagePlayer(9001);
-					args.Player.SendInfoMessage("You poked {0}. BOOM!", new object[]
+					args.Player.SendInfoMessage("You poked {0}. BOOM! BANG! PAW!", new object[]
 					{
 						tSPlayer.Name
 					});
-					TSPlayer.All.SendSuccessMessage("{0} poked {1}. BOOM!", new object[]
-					{
-						args.Player.Name,
-						tSPlayer.Name
-					});
+                    TSPlayer.All.SendMessage(string.Format("{0} poked {1} in the tummy. KADUSH! Who is the next one?!", args.Player.Name, tSPlayer.Name), Color.MediumTurquoise);                    
 					TShock.Log.Info("{0} super-poked {1}.", new object[]
 					{
 						args.Player.Name,
@@ -294,15 +286,11 @@ namespace FACommands
 				List<TSPlayer> list = TShock.Utils.FindPlayer(text);
 				if (list.Count == 0)
 				{
-					args.Player.SendInfoMessage("You hugged your invisible friend {0}!", new object[]
+					args.Player.SendInfoMessage("You hugged your invisible friend {0}! Common! Get a life bro...", new object[]
 					{
 						text
 					});
-					TSPlayer.All.SendSuccessMessage("{0} hugged " + (args.Player.TPlayer.Male ? "his" : "her") + " invisible friend {1}!", new object[]
-					{
-						args.Player.Name,
-						text
-					});
+                    TSPlayer.All.SendMessage(string.Format("{0} hugged " + (args.Player.TPlayer.Male ? "his" : "her") + " invisible friend {1}! Common! Really? Get a life bro...", args.Player.Name, text), Color.Chartreuse);                   
 				}
 				else if (list.Count > 1)
 				{
@@ -312,16 +300,12 @@ namespace FACommands
 				else
 				{
 					TSPlayer tSPlayer = list[0];
-					args.Player.SendInfoMessage("You hugged {0}!", new object[]
+					args.Player.SendInfoMessage("You hugged {0}! You need love huh?", new object[]
 					{
 						tSPlayer.Name
 					});
-					TSPlayer.All.SendSuccessMessage("{0} hugged {1}!", new object[]
-					{
-						args.Player.Name,
-						tSPlayer.Name
-					});
-					TShock.Log.Info("{0} hugged {1}!", new object[]
+                    TSPlayer.All.SendMessage(string.Format("{0} hugged {1}! Love is everywhere!", args.Player.Name, tSPlayer.Name), Color.Chartreuse);
+					TShock.Log.Info("{0} hugged {1}! Love is everywhere!", new object[]
 					{
 						args.Player.Name,
 						tSPlayer.Name
@@ -348,25 +332,19 @@ namespace FACommands
 				{
 					if (args.Parameters[0].ToLower() != "air")
 					{
-						args.Player.SendInfoMessage("You licked the air! {0} was not found...", new object[]
+						args.Player.SendInfoMessage("You licked the air! Tasted like air... hum... {0} was not found...", new object[]
 						{
 							text
 						});
-						TSPlayer.All.SendSuccessMessage("{0} licked the air!", new object[]
-						{
-							args.Player.Name
-						});
+                        TSPlayer.All.SendMessage(string.Format("{0} licked the air! Tasted like air... hum...", args.Player.Name), Color.DarkOrchid);
 					}
 					else
 					{
-						args.Player.SendInfoMessage("You licked the air!", new object[]
+						args.Player.SendInfoMessage("You licked the air! Tasted like air... hum...", new object[]
 						{
 							text
 						});
-						TSPlayer.All.SendSuccessMessage("{0} licked the air!", new object[]
-						{
-							args.Player.Name
-						});
+                        TSPlayer.All.SendMessage(string.Format("{0} licked the air! Tasted like air... hum...", args.Player.Name), Color.DarkOrchid);
 					}
 				}
 				else if (list.Count > 1)
@@ -377,15 +355,11 @@ namespace FACommands
 				else
 				{
 					TSPlayer tSPlayer = list[0];
-					args.Player.SendInfoMessage("You licked {0}!", new object[]
+					args.Player.SendInfoMessage("You licked {0}! Really...?", new object[]
 					{
 						tSPlayer.Name
 					});
-					TSPlayer.All.SendSuccessMessage("{0} licked {1}!", new object[]
-					{
-						args.Player.Name,
-						tSPlayer.Name
-					});
+                    TSPlayer.All.SendMessage(string.Format("{0} licked {1}! Ugh... X.X", args.Player.Name, tSPlayer.Name), Color.DarkOrchid);                    
 					TShock.Log.Info("{0} licked {1}!", new object[]
 					{
 						args.Player.Name,
@@ -398,10 +372,7 @@ namespace FACommands
 		private void FACPalm(CommandArgs args)
 		{
 			args.Player.SendInfoMessage("You facepalmed.");
-			TSPlayer.All.SendSuccessMessage("{0} facepalmed.", new object[]
-			{
-				args.Player.Name
-			});
+            TSPlayer.All.SendMessage(string.Format("{0} facepalmed.", args.Player.Name), Color.Chocolate);   
             TShock.Log.Info("{0} facepalmed.", new object[]
 			{
 				args.Player.Name
@@ -426,25 +397,19 @@ namespace FACommands
 				{
 					if (args.Parameters[0].ToLower() != "air")
 					{
-						args.Player.SendInfoMessage("You kissed the air! {0} was not found...", new object[]
+						args.Player.SendInfoMessage("You kissed the air! {0} was not found... get a life bro...", new object[]
 						{
 							text
 						});
-						TSPlayer.All.SendSuccessMessage("{0} kissed the air!", new object[]
-						{
-							args.Player.Name
-						});
+                        TSPlayer.All.SendMessage(string.Format("{0} kissed the air! The hell...?!", args.Player.Name), Color.Coral);                    
 					}
 					else
 					{
-						args.Player.SendInfoMessage("You kissed the air!", new object[]
+						args.Player.SendInfoMessage("You kissed the air! WTF?!", new object[]
 						{
 							text
 						});
-						TSPlayer.All.SendSuccessMessage("{0} kissed the air!", new object[]
-						{
-							args.Player.Name
-						});
+                        TSPlayer.All.SendMessage(string.Format("{0} kissed the air! The hell...?!", args.Player.Name), Color.Coral);
 					}
 				}
 				else if (list.Count > 1)
@@ -455,15 +420,11 @@ namespace FACommands
 				else
 				{
 					TSPlayer tSPlayer = list[0];
-					args.Player.SendInfoMessage("You kissed {0}!", new object[]
+					args.Player.SendInfoMessage("You kissed {0}! RAAWWRRR! Are you horny?", new object[]
 					{
 						tSPlayer.Name
 					});
-					TSPlayer.All.SendSuccessMessage("{0} kisses {1}!", new object[]
-					{
-						args.Player.Name,
-						tSPlayer.Name
-					});
+                    TSPlayer.All.SendMessage(string.Format("{0} kisses {1}! Awwwhhh... how sweet? <3", args.Player.Name, tSPlayer.Name), Color.Coral);                 
                     TShock.Log.Info("{0} kisses {1}!", new object[]
 					{
 						args.Player.Name,
@@ -489,15 +450,11 @@ namespace FACommands
 				List<TSPlayer> list = TShock.Utils.FindPlayer(text);
 				if (list.Count == 0)
 				{
-					args.Player.SendInfoMessage("You stabbed your invisible friend {0}!", new object[]
+					args.Player.SendInfoMessage("You stabbed your invisible friend {0}! You should train harder!", new object[]
 					{
 						text
 					});
-					TSPlayer.All.SendSuccessMessage("{0} stabbed " + (args.Player.TPlayer.Male ? "his" : "her") + " invisible friend {1}!", new object[]
-					{
-						args.Player.Name,
-						text
-					});
+                    TSPlayer.All.SendMessage(string.Format("{0} stabbed " + (args.Player.TPlayer.Male ? "his" : "her") + " invisible friend {1}! He should train harder...", args.Player.Name, text), Color.AliceBlue);
 				}
 				else if (list.Count > 1)
 				{
@@ -508,15 +465,11 @@ namespace FACommands
 				{
 					TSPlayer tSPlayer = list[0];
 					tSPlayer.DamagePlayer(9001);
-					args.Player.SendInfoMessage("You stabbed {0} for OVER 9000 damage!", new object[]
+					args.Player.SendInfoMessage("You stabbed {0} for OVER 9000 damage! That was close!", new object[]
 					{
 						tSPlayer.Name
 					});
-					TSPlayer.All.SendSuccessMessage("{0} stabbed {1} mercilessly!", new object[]
-					{
-						args.Player.Name,
-						tSPlayer.Name
-					});
+                    TSPlayer.All.SendMessage(string.Format("{0} stabbed {1} mercilessly! GO CATCH HIM! O.O", args.Player.Name, tSPlayer.Name), Color.AliceBlue);                   
                     TShock.Log.Info("{0} stabbed {1}.", new object[]
 					{
 						args.Player.Name,
@@ -544,25 +497,19 @@ namespace FACommands
 				{
 					if (args.Parameters[0].ToLower() != "air")
 					{
-						args.Player.SendInfoMessage("You love the air! {0} was not found...", new object[]
+						args.Player.SendInfoMessage("You love the air! {0} was not found... GO! Search your true love!", new object[]
 						{
 							text
 						});
-						TSPlayer.All.SendSuccessMessage("{0} loves the air!", new object[]
-						{
-							args.Player.Name
-						});
+                        TSPlayer.All.SendMessage(string.Format("{0} loves the air! You should get some friends... :O", args.Player.Name), Color.Pink);                       
 					}
 					else
 					{
-						args.Player.SendInfoMessage("You love the air!", new object[]
+						args.Player.SendInfoMessage("You love the air! Really?", new object[]
 						{
 							text
 						});
-						TSPlayer.All.SendSuccessMessage("{0} loves the air!", new object[]
-						{
-							args.Player.Name
-						});
+                        TSPlayer.All.SendMessage(string.Format("{0} loves the air! Well... >.>", args.Player.Name), Color.Pink);                        
 					}
 				}
 				else if (list.Count > 1)
@@ -573,15 +520,11 @@ namespace FACommands
 				else
 				{
 					TSPlayer tSPlayer = list[0];
-					args.Player.SendInfoMessage("You love {0}!", new object[]
+					args.Player.SendInfoMessage("You love {0}! hum... next step? ;)", new object[]
 					{
 						tSPlayer.Name
 					});
-					TSPlayer.All.SendSuccessMessage("{0} loves {1}!", new object[]
-					{
-						args.Player.Name,
-						tSPlayer.Name
-					});
+                    TSPlayer.All.SendMessage(string.Format("{0} loves {1}! Oehlalah... ready for the next step? ;)", args.Player.Name, tSPlayer.Name), Color.Pink);
                     TShock.Log.Info("{0} loves {1}!", new object[]
 					{
 						args.Player.Name,
@@ -601,10 +544,7 @@ namespace FACommands
 			{
 				args.Player.DamagePlayer(1000);
 			}
-			TSPlayer.All.SendSuccessMessage("{0} planted " + (args.Player.TPlayer.Male ? "his" : "her") + " face on the ground.", new object[]
-			{
-				args.Player.Name
-			});
+            TSPlayer.All.SendMessage(string.Format("{0} planted " + (args.Player.TPlayer.Male ? "his" : "her") + " face on the ground.", args.Player.Name), Color.BlanchedAlmond); 
 		}
 
 		private void FACSlap(CommandArgs args)
@@ -613,10 +553,7 @@ namespace FACommands
 			{
 				args.Player.SendInfoMessage("You slapped everyone! That stings!");
 			}
-			TSPlayer.All.SendInfoMessage("{0} slapped you (along with everyone else)!", new object[]
-			{
-				args.Player.Name
-			});
+            TSPlayer.All.SendMessage(string.Format("{0} slapped you (along with everyone else)! THE HELL! CATCH HIM! :O", args.Player.Name), Color.BlanchedAlmond);
 			TSPlayer.All.DamagePlayer(15);
 		}
 
@@ -702,11 +639,7 @@ namespace FACommands
 				else if (list[0].Group.Name == "superadmin" | list[0].Group.Name == "owner")
                 {
 					args.Player.SendErrorMessage("You cannot disturb this player!");
-					TSPlayer.All.SendSuccessMessage("{0} tried to disturb {1}! {1} dodged the attack!", new object[]
-					{
-						args.Player.Name,
-						list[0].Name
-					});
+                    TSPlayer.All.SendMessage(string.Format("{0} tried to disturb {1} but... {1} turned around and kicked {0} in the coconuts! DOUH!", args.Player.Name), Color.Crimson);
 				}
 				else
 				{
@@ -718,15 +651,11 @@ namespace FACommands
 					tSPlayer.SetBuff(103, 3600, false);
 					tSPlayer.SetBuff(115, 3600, false);
 					tSPlayer.SetBuff(120, 3600, false);
-					args.Player.SendInfoMessage("You disturbed {0}! You feel slightly better...", new object[]
+					args.Player.SendInfoMessage("You disturbed {0}! You feel slightly better now...", new object[]
 					{
 						tSPlayer.Name
 					});
-					TSPlayer.All.SendSuccessMessage("{0} disturbed {1}! Is he angry now?", new object[]
-					{
-						args.Player.Name,
-						tSPlayer.Name
-					});
+                    TSPlayer.All.SendMessage(string.Format("{0} disturbed {1}! Is he angry now? huh?", args.Player.Name, tSPlayer.Name), Color.Crimson);
                     TShock.Log.Info("{0} disturbed {1}.", new object[]
 					{
 						args.Player.Name,
