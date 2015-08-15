@@ -494,7 +494,7 @@ namespace FACommands
                 {
                     TSPlayer tSPlayer = list[0];
                         tSPlayer.SetBuff(92, 3600, false);
-                        args.Player.SendInfoMessage("... does it made you happy? Wait for the alimony! :D", new object[]
+                        args.Player.SendInfoMessage("... does it made you happy? I hope it's your true love... otherwise much fun with the alimony! :D", new object[]
                     {
                         tSPlayer.Name
                     });
