@@ -41,7 +41,7 @@ namespace FACommands
 		{
 			get
 			{
-				return new Version(1, 1, 6);
+				return new Version(1, 1, 7);
 			}
 		}
 
