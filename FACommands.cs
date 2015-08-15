@@ -25,7 +25,7 @@ namespace FACommands
 		{
 			get
 			{
-				return "Zaicon & Hiarni";
+				return "Hiarni & Zaicon";
 			}
 		}
 
@@ -71,6 +71,7 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.staff", FACClear, "ca") { HelpText = "Short command for clearing up items and projectiles." });
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP1, "p1") { AllowServer = false, HelpText = "Short command for WorldEdit //point1" });
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP2, "p2") { AllowServer = false, HelpText = "Short command for WorldEdit //point2" });
+            Commands.ChatCommands.Add(new Command("facommands.more", FACMore, "more") { AllowServer = false, HelpText = "Fill up all your items to max stack." });
             Commands.ChatCommands.Add(new Command("facommands.npc", FACNPC, "npcr") { AllowServer = false, HelpText = "Respawns all Town NPC's at your location." });
             Commands.ChatCommands.Add(new Command("facommands.obc", FACOBC, "obc") { HelpText = "Owner Broadcast." });
             Commands.ChatCommands.Add(new Command("facommands.slay", FACSlay, "slay") { HelpText = "Slay them DOWN! ALL!" });
@@ -83,6 +84,7 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.fun", FACPalm, "facepalm") { HelpText = "Perform a facepalm." });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACPlant, "faceplant") { HelpText = "Are you crazy?!" });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACLove, "love") { HelpText = "hum... this must be true love..." });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACBaby, "baby") { HelpText = "uhh wat?! woah wait! Dude! You will pay forever!" });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACKiss, "kiss") { HelpText = "RAAWWWRRRR! What next?!" });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACSlap, "slapall") { HelpText = "Dusty sticks incomming!" });
             Commands.ChatCommands.Add(new Command("facommands.gift", FACGift, "gift") { HelpText = "If they were good!" });
@@ -110,6 +112,41 @@ namespace FACommands
 			Commands.HandleCommand(args.Player, "/clear item 100000");
 			Commands.HandleCommand(args.Player, "/clear projectile 100000");
 		}
+
+        private void FACMore(CommandArgs args)
+        {
+            if (args.Parameters.Count > 0 && args.Parameters[0].ToLower() == "all")
+            {
+                bool full = true;
+                int i = 0;
+                foreach (Item item in args.TPlayer.inventory)
+                {
+                    if (item == null || item.stack == 0) continue;
+                    int amtToAdd = item.maxStack - item.stack;
+                    if (item.stack > 0 && amtToAdd > 0 && !item.name.ToLower().Contains("coin"))
+                    {
+                        full = false;
+                        args.Player.GiveItem(item.type, item.name, item.width, item.height, amtToAdd);
+                    }
+                    i++;
+                }
+                if (!full)
+                    args.Player.SendSuccessMessage("Filled up all your items.");
+                else
+                    args.Player.SendErrorMessage("Your inventory is already filled up.");
+            }
+            else
+            {
+                Item holding = args.Player.TPlayer.inventory[args.TPlayer.selectedItem];
+                int amtToAdd = holding.maxStack - holding.stack;
+                if (holding.stack > 0 && amtToAdd > 0)
+                    args.Player.GiveItem(holding.type, holding.name, holding.width, holding.height, amtToAdd);
+                if (amtToAdd == 0)
+                    args.Player.SendErrorMessage("Your {0} is already full.", holding.name);
+                else
+                    args.Player.SendSuccessMessage("Filled up your {0}.", holding.name);
+            }
+        }
 
         private void FACNPC(CommandArgs args)
         {
@@ -305,7 +342,7 @@ namespace FACommands
 						tSPlayer.Name
 					});
                     TSPlayer.All.SendMessage(string.Format("{0} hugged {1}! Love is everywhere!", args.Player.Name, tSPlayer.Name), Color.Chartreuse);
-					TShock.Log.Info("{0} hugged {1}! Love is everywhere!", new object[]
+					TShock.Log.Info("{0} hugged {1}! Awwwhhh... how sweet? <3", new object[]
 					{
 						args.Player.Name,
 						tSPlayer.Name
@@ -424,7 +461,7 @@ namespace FACommands
 					{
 						tSPlayer.Name
 					});
-                    TSPlayer.All.SendMessage(string.Format("{0} kisses {1}! Awwwhhh... how sweet? <3", args.Player.Name, tSPlayer.Name), Color.Coral);                 
+                    TSPlayer.All.SendMessage(string.Format("{0} kisses {1}! Love is everywhere! <3", args.Player.Name, tSPlayer.Name), Color.Coral);                 
                     TShock.Log.Info("{0} kisses {1}!", new object[]
 					{
 						args.Player.Name,
@@ -434,7 +471,44 @@ namespace FACommands
 			}
 		}
 
-		private void FACStab(CommandArgs args)
+        private void FACBaby(CommandArgs args)
+        {
+            if (args.Parameters.Count != 1)
+            {
+                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /baby <player>");
+            }
+            else if (args.Parameters[0].Length == 0)
+            {
+                args.Player.SendErrorMessage("Invalid player!");
+            }
+            else
+            {
+                string text = args.Parameters[0];
+                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                if (list.Count > 1)
+                {
+                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                     select p.Name);
+                }
+                else
+                {
+                    TSPlayer tSPlayer = list[0];
+                        tSPlayer.SetBuff(92, 3600, false);
+                        args.Player.SendInfoMessage("... does it made you happy? Wait for the alimony! :D", new object[]
+                    {
+                        tSPlayer.Name
+                    });
+                    TSPlayer.All.SendMessage(string.Format("{0} tried to make a baby (grinch) with {1}! awwhhh look people! It's soooo cute! <3", args.Player.Name, tSPlayer.Name), Color.Firebrick);
+                    TShock.Log.Info("{0} tried to make a baby (grinch) with {1}!", new object[]
+                    {
+                        args.Player.Name,
+                        tSPlayer.Name
+                    });
+                }
+            }
+        }
+
+        private void FACStab(CommandArgs args)
 		{
 			if (args.Parameters.Count != 1)
 			{
@@ -524,7 +598,7 @@ namespace FACommands
 					{
 						tSPlayer.Name
 					});
-                    TSPlayer.All.SendMessage(string.Format("{0} loves {1}! Oehlalah... ready for the next step? ;)", args.Player.Name, tSPlayer.Name), Color.Pink);
+                    TSPlayer.All.SendMessage(string.Format("{0} loves {1}! Oehlalah... ready for the next step? <3", args.Player.Name, tSPlayer.Name), Color.Pink);
                     TShock.Log.Info("{0} loves {1}!", new object[]
 					{
 						args.Player.Name,
@@ -538,13 +612,13 @@ namespace FACommands
 		{
 			if (!args.Player.RealPlayer)
 			{
-				args.Player.SendInfoMessage("You planted your face on the ground.");
+				args.Player.SendInfoMessage("You planted your face on the ground. Serious man...?");
 			}
 			else
 			{
 				args.Player.DamagePlayer(1000);
 			}
-            TSPlayer.All.SendMessage(string.Format("{0} planted " + (args.Player.TPlayer.Male ? "his" : "her") + " face on the ground.", args.Player.Name), Color.BlanchedAlmond); 
+            TSPlayer.All.SendMessage(string.Format("{0} planted " + (args.Player.TPlayer.Male ? "his" : "her") + " face on the ground. Are you crazy?!", args.Player.Name), Color.BlanchedAlmond); 
 		}
 
 		private void FACSlap(CommandArgs args)
