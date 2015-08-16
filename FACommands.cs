@@ -498,7 +498,7 @@ namespace FACommands
                     {
                         tSPlayer.Name
                     });
-                    TSPlayer.All.SendMessage(string.Format("{0} tried to make a baby (grinch) with {1}! awwhhh look people! It's soooo cute! <3", args.Player.Name, tSPlayer.Name), Color.Firebrick);
+                    TSPlayer.All.SendMessage(string.Format("{0} tried to make a baby (grinch) with {1}! awwhhh look! It's soooo cute! <3", args.Player.Name, tSPlayer.Name), Color.Firebrick);
                     TShock.Log.Info("{0} tried to make a baby (grinch) with {1}!", new object[]
                     {
                         args.Player.Name,
