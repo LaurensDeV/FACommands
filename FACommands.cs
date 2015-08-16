@@ -341,7 +341,7 @@ namespace FACommands
 					{
 						tSPlayer.Name
 					});
-                    TSPlayer.All.SendMessage(string.Format("{0} hugged {1}! Love is everywhere!", args.Player.Name, tSPlayer.Name), Color.Chartreuse);
+                    TSPlayer.All.SendMessage(string.Format("{0} hugged {1}! Awwwhhh... how sweet? <3", args.Player.Name, tSPlayer.Name), Color.Chartreuse);
 					TShock.Log.Info("{0} hugged {1}! Awwwhhh... how sweet? <3", new object[]
 					{
 						args.Player.Name,
