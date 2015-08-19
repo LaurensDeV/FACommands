@@ -75,6 +75,7 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.npc", FACNPC, "npcr") { AllowServer = false, HelpText = "Respawns all Town NPC's at your location." });
             Commands.ChatCommands.Add(new Command("facommands.obc", FACOBC, "obc") { HelpText = "Owner Broadcast." });
             Commands.ChatCommands.Add(new Command("facommands.slay", FACSlay, "slay") { HelpText = "Slay them DOWN! ALL!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACFart, "fart") { HelpText = "Woah! That fart will blow you away!" });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACPoke, "poke") { HelpText = "Give someone a lovely poke." });
             Commands.ChatCommands.Add(new Command("facommands.spoke", FACSPoke, "spoke") { HelpText = "You shouldn't do that..." });
             Commands.ChatCommands.Add(new Command("facommands.stab", FACStab, "stab") { HelpText = "Well, you should better run now!" });
@@ -221,6 +222,44 @@ namespace FACommands
                     string reason = " " + string.Join(" ", args.Parameters.Skip(1));
                     NetMessage.SendData((int)26, -1, -1, reason, tSPlayer.Index, 0f, 15000);
                     args.Player.SendSuccessMessage("You just slayed {0}.", tSPlayer.Name);
+                }
+            }
+        }
+
+        private void FACFart(CommandArgs args)
+        {
+            if (args.Parameters.Count != 1)
+            {
+                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /fart <player>");
+            }
+            else if (args.Parameters[0].Length == 0)
+            {
+                args.Player.SendErrorMessage("Invalid player!");
+            }
+            else
+            {
+                string text = args.Parameters[0];
+                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                if (list.Count > 1)
+                {
+                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                     select p.Name);
+                }
+                else
+                {
+                    TSPlayer tSPlayer = list[0];
+                    tSPlayer.SetBuff(163, 600, true);
+                    tSPlayer.SetBuff(120, 600, true);
+                    args.Player.SendInfoMessage("Woah! That fart dude! You shouldn't eat so much shit!", new object[]
+                {
+                        tSPlayer.Name
+                });
+                    TSPlayer.All.SendMessage(string.Format("{0} turned around and farted {1} in the face! Woah! That fart mades you blind dude! aahh it stinks so much! Run away! o.O", args.Player.Name, tSPlayer.Name), Color.Tan);
+                    TShock.Log.Info("{0} farted {1} in the face!", new object[]
+                    {
+                        args.Player.Name,
+                        tSPlayer.Name
+                    });
                 }
             }
         }
@@ -718,13 +757,13 @@ namespace FACommands
 				else
 				{
 					TSPlayer tSPlayer = list[0];
-					tSPlayer.SetBuff(26, 3600, false);
-					tSPlayer.SetBuff(30, 3600, false);
-					tSPlayer.SetBuff(31, 3600, false);
-					tSPlayer.SetBuff(32, 3600, false);
-					tSPlayer.SetBuff(103, 3600, false);
-					tSPlayer.SetBuff(115, 3600, false);
-					tSPlayer.SetBuff(120, 3600, false);
+					tSPlayer.SetBuff(26, 900, true);
+					tSPlayer.SetBuff(30, 900, true);
+					tSPlayer.SetBuff(31, 900, true);
+					tSPlayer.SetBuff(32, 900, true);
+					tSPlayer.SetBuff(103, 900, true);
+					tSPlayer.SetBuff(115, 900, true);
+					tSPlayer.SetBuff(120, 900, true);
 					args.Player.SendInfoMessage("You disturbed {0}! You feel slightly better now...", new object[]
 					{
 						tSPlayer.Name
