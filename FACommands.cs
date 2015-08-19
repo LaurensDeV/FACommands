@@ -41,7 +41,7 @@ namespace FACommands
 		{
 			get
 			{
-				return new Version(1, 1, 7);
+				return new Version(1, 1, 8);
 			}
 		}
 
@@ -76,6 +76,7 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.obc", FACOBC, "obc") { HelpText = "Owner Broadcast." });
             Commands.ChatCommands.Add(new Command("facommands.slay", FACSlay, "slay") { HelpText = "Slay them DOWN! ALL!" });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACFart, "fart") { HelpText = "Woah! That fart will blow you away!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACTickle, "tickle") { HelpText = "Tickle them down!" });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACPoke, "poke") { HelpText = "Give someone a lovely poke." });
             Commands.ChatCommands.Add(new Command("facommands.spoke", FACSPoke, "spoke") { HelpText = "You shouldn't do that..." });
             Commands.ChatCommands.Add(new Command("facommands.stab", FACStab, "stab") { HelpText = "Well, you should better run now!" });
@@ -256,6 +257,43 @@ namespace FACommands
                 });
                     TSPlayer.All.SendMessage(string.Format("{0} turned around and farted {1} in the face! Woah! That fart mades you blind dude! aahh it stinks so much! Run away! o.O", args.Player.Name, tSPlayer.Name), Color.Tan);
                     TShock.Log.Info("{0} farted {1} in the face!", new object[]
+                    {
+                        args.Player.Name,
+                        tSPlayer.Name
+                    });
+                }
+            }
+        }
+
+        private void FACTickle(CommandArgs args)
+        {
+            if (args.Parameters.Count != 1)
+            {
+                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /tickle <player>");
+            }
+            else if (args.Parameters[0].Length == 0)
+            {
+                args.Player.SendErrorMessage("Invalid player!");
+            }
+            else
+            {
+                string text = args.Parameters[0];
+                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                if (list.Count > 1)
+                {
+                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                     select p.Name);
+                }
+                else
+                {
+                    TSPlayer tSPlayer = list[0];
+                    tSPlayer.SetBuff(2, 3600, true);
+                    args.Player.SendInfoMessage("You shouldn't tickle people to much... >.>", new object[]
+                {
+                        tSPlayer.Name
+                });
+                    TSPlayer.All.SendMessage(string.Format("{0} tickles {1}! Isn't that sweet? :P", args.Player.Name, tSPlayer.Name), Color.Thistle);
+                    TShock.Log.Info("{0} tickles {1}!", new object[]
                     {
                         args.Player.Name,
                         tSPlayer.Name
@@ -533,6 +571,7 @@ namespace FACommands
                 {
                     TSPlayer tSPlayer = list[0];
                         tSPlayer.SetBuff(92, 3600, false);
+                        tSPlayer.SetBuff(103, 3600, true);
                         args.Player.SendInfoMessage("... does it made you happy? I hope it's your true love... otherwise much fun with the alimony! :D", new object[]
                     {
                         tSPlayer.Name
