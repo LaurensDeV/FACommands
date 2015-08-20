@@ -230,18 +230,22 @@ namespace FACommands
         private void FACFart(CommandArgs args)
         {
             if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /fart <player>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
-            else
-            {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count > 1)
+			{
+				args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /fart <player>");
+			}
+			else if (args.Parameters[0].Length == 0)
+			{
+				args.Player.SendErrorMessage("Invalid player!");
+			}
+			else
+			{
+				string text = args.Parameters[0];
+				List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+				if (list.Count == 0)
+				{
+					args.Player.SendErrorMessage("No players matched!");
+				}
+				else if (list.Count > 1)
                 {
                     TShock.Utils.SendMultipleMatchError(args.Player, from p in list
                                                                      select p.Name);
