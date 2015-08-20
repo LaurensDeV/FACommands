@@ -246,6 +246,11 @@ namespace FACommands
                     TShock.Utils.SendMultipleMatchError(args.Player, from p in list
                                                                      select p.Name);
                 }
+                else if (list[0].Group.Name == "superadmin" | list[0].Group.Name == "owner")
+                {
+                    args.Player.SendErrorMessage("You cannot fart this player!");
+                    TSPlayer.All.SendMessage(string.Format("{0} tried to fart {1} in the face! {1} turned around and kicked {0} in the coconuts! DOUH!", args.Player.Name), Color.Tan);
+                }
                 else
                 {
                     TSPlayer tSPlayer = list[0];
