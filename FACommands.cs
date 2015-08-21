@@ -248,12 +248,11 @@ namespace FACommands
 				else if (list.Count > 1)
                 {
                     TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
+                    select p.Name);
                 }
                 else if (list[0].Group.Name == "superadmin" | list[0].Group.Name == "owner")
                 {
                     args.Player.SendErrorMessage("You cannot fart this player!");
-                    TSPlayer.All.SendMessage(string.Format("{0} tried to fart {1} in the face! {1} turned around and kicked {0} in the coconuts! DOUH!", args.Player.Name), Color.Tan);
                 }
                 else
                 {
@@ -264,7 +263,7 @@ namespace FACommands
                 {
                         tSPlayer.Name
                 });
-                    TSPlayer.All.SendMessage(string.Format("{0} turned around and farted {1} in the face! Woah! That fart mades you blind dude! aahh it stinks so much! Run away! o.O", args.Player.Name, tSPlayer.Name), Color.Tan);
+                    TSPlayer.All.SendMessage(string.Format("{0} turned around and farted {1} in the face! Woah! That fart mades you blind dude! aahh it stinks so much! Run away! o.O", args.Player.Name, tSPlayer.Name), Color.Sienna);
                     TShock.Log.Info("{0} farted {1} in the face!", new object[]
                     {
                         args.Player.Name,
@@ -800,7 +799,6 @@ namespace FACommands
 				else if (list[0].Group.Name == "superadmin" | list[0].Group.Name == "owner")
                 {
 					args.Player.SendErrorMessage("You cannot disturb this player!");
-                    TSPlayer.All.SendMessage(string.Format("{0} tried to disturb {1} but... {1} turned around and kicked {0} in the coconuts! DOUH!", args.Player.Name), Color.Crimson);
 				}
 				else
 				{
