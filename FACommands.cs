@@ -50,7 +50,7 @@ namespace FACommands
         {
             get
             {
-                return new Version(1, 1, 8);
+                return new Version(1, 1, 9);
             }
         }
 
@@ -111,9 +111,73 @@ namespace FACommands
                     {
                         continue;
                     }
-                    if (player.GlobalCooldown > 0)
+                    if (player.moreCD > 0)
                     {
-                        player.GlobalCooldown--;
+                        player.moreCD--;
+                    }
+                    if (player.slayCD > 0)
+                    {
+                        player.slayCD--;
+                    }
+                    if (player.fartCD > 0)
+                    {
+                        player.fartCD--;
+                    }
+                    if (player.tickleCD > 0)
+                    {
+                        player.tickleCD--;
+                    }
+                    if (player.pokeCD > 0)
+                    {
+                        player.pokeCD--;
+                    }
+                    if (player.spokeCD > 0)
+                    {
+                        player.spokeCD--;
+                    }
+                    if (player.hugCD > 0)
+                    {
+                        player.hugCD--;
+                    }
+                    if (player.lickCD > 0)
+                    {
+                        player.lickCD--;
+                    }
+                    if (player.facepalmCD > 0)
+                    {
+                        player.facepalmCD--;
+                    }
+                    if (player.kissCD > 0)
+                    {
+                        player.kissCD--;
+                    }
+                    if (player.babyCD > 0)
+                    {
+                        player.babyCD--;
+                    }
+                    if (player.stabCD > 0)
+                    {
+                        player.stabCD--;
+                    }
+                    if (player.loveCD > 0)
+                    {
+                        player.loveCD--;
+                    }
+                    if (player.faceplantCD > 0)
+                    {
+                        player.faceplantCD--;
+                    }
+                    if (player.slapallCD > 0)
+                    {
+                        player.slapallCD--;
+                    }
+                    if (player.giftCD > 0)
+                    {
+                        player.giftCD--;
+                    }
+                    if (player.disturbCD > 0)
+                    {
+                        player.disturbCD--;
                     }
                 }
             }
@@ -131,24 +195,24 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.more", FACMore, "more") { AllowServer = false, HelpText = "Fill up all your items to max stack." });
             Commands.ChatCommands.Add(new Command("facommands.npc", FACNPC, "npcr") { AllowServer = false, HelpText = "Respawns all Town NPC's at your location." });
             Commands.ChatCommands.Add(new Command("facommands.obc", FACOBC, "obc") { HelpText = "Owner Broadcast." });
-            Commands.ChatCommands.Add(new Command("facommands.slay", FACSlay, "slay") { HelpText = "Slay them DOWN! ALL!" });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACFart, "fart") { HelpText = "Woah! That fart will blow you away!" });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACTickle, "tickle") { HelpText = "Tickle them down!" });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACPoke, "poke") { HelpText = "Give someone a lovely poke." });
-            Commands.ChatCommands.Add(new Command("facommands.spoke", FACSPoke, "spoke") { HelpText = "You shouldn't do that..." });
-            Commands.ChatCommands.Add(new Command("facommands.stab", FACStab, "stab") { HelpText = "Well, you should better run now!" });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACHug, "hug") { HelpText = "Awwwhhh how lovely!" });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACLick, "lick") { HelpText = "Ugh... are you serious?!" });
-            Commands.ChatCommands.Add(new Command("facommands.disturb", FACDisturb, "disturb") { HelpText = "They will catch you with theyr dusty sticks!" });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACPalm, "facepalm") { HelpText = "Perform a facepalm." });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACPlant, "faceplant") { HelpText = "Are you crazy?!" });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACLove, "love") { HelpText = "hum... this must be true love..." });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACBaby, "baby") { HelpText = "uhh wat?! woah wait! Dude! You will pay forever!" });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACKiss, "kiss") { HelpText = "RAAWWWRRRR! What next?!" });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACSlap, "slapall") { HelpText = "Dusty sticks incomming!" });
-            Commands.ChatCommands.Add(new Command("facommands.gift", FACGift, "gift") { HelpText = "If they were good!" });
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACUI, "uinfo") { HelpText = "Lists detailed informations about players." });
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { HelpText = "Lists detailed informations about banned players." });
+            Commands.ChatCommands.Add(new Command("facommands.slay", FACSlay, "slay") { AllowServer = false, HelpText = "Slay them DOWN! ALL!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACFart, "fart") { AllowServer = false, HelpText = "Woah! That fart will blow you away!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACTickle, "tickle") { AllowServer = false, HelpText = "Tickle them down!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACPoke, "poke") { AllowServer = false, HelpText = "Give someone a lovely poke." });
+            Commands.ChatCommands.Add(new Command("facommands.spoke", FACSPoke, "spoke") { AllowServer = false, HelpText = "You shouldn't do that..." });
+            Commands.ChatCommands.Add(new Command("facommands.stab", FACStab, "stab") { AllowServer = false, HelpText = "Well, you should better run now!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACHug, "hug") { AllowServer = false, HelpText = "Awwwhhh how lovely!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACLick, "lick") { AllowServer = false, HelpText = "Ugh... are you serious?!" });
+            Commands.ChatCommands.Add(new Command("facommands.disturb", FACDisturb, "disturb") { AllowServer = false, HelpText = "They will catch you with theyr dusty sticks!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACPalm, "facepalm") { AllowServer = false, HelpText = "Perform a facepalm." });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACPlant, "faceplant") { AllowServer = false, HelpText = "Are you crazy?!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACLove, "love") { AllowServer = false, HelpText = "hum... this must be true love..." });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACBaby, "baby") { AllowServer = false, HelpText = "uhh wat?! woah wait! Dude! You will pay forever!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACKiss, "kiss") { AllowServer = false, HelpText = "RAAWWWRRRR! What next?!" });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACSlap, "slapall") { AllowServer = false, HelpText = "Dusty sticks incomming!" });
+            Commands.ChatCommands.Add(new Command("facommands.gift", FACGift, "gift") { AllowServer = false, HelpText = "If they were good!" });
+            Commands.ChatCommands.Add(new Command("facommands.staff", FACUI, "uinfo") { AllowServer = false, HelpText = "Lists detailed informations about players." });
+            Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { AllowServer = false, HelpText = "Lists detailed informations about banned players." });
             ReadConfig();
         }
         #endregion
@@ -185,36 +249,49 @@ namespace FACommands
         #region More
         private void FACMore(CommandArgs args)
         {
-            if (args.Parameters.Count > 0 && args.Parameters[0].ToLower() == "all")
-            {
-                bool full = true;
-                int i = 0;
-                foreach (Item item in args.TPlayer.inventory)
-                {
-                    if (item == null || item.stack == 0) continue;
-                    int amtToAdd = item.maxStack - item.stack;
-                    if (item.stack > 0 && amtToAdd > 0 && !item.name.ToLower().Contains("coin"))
-                    {
-                        full = false;
-                        args.Player.GiveItem(item.type, item.name, item.width, item.height, amtToAdd);
-                    }
-                    i++;
-                }
-                if (!full)
-                    args.Player.SendSuccessMessage("Filled up all your items.");
-                else
-                    args.Player.SendErrorMessage("Your inventory is already filled up.");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.moreCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                Item holding = args.Player.TPlayer.inventory[args.TPlayer.selectedItem];
-                int amtToAdd = holding.maxStack - holding.stack;
-                if (holding.stack > 0 && amtToAdd > 0)
-                    args.Player.GiveItem(holding.type, holding.name, holding.width, holding.height, amtToAdd);
-                if (amtToAdd == 0)
-                    args.Player.SendErrorMessage("Your {0} is already full.", holding.name);
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.moreCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count > 0 && args.Parameters[0].ToLower() == "all")
+                {
+                    bool full = true;
+                    int i = 0;
+                    foreach (Item item in args.TPlayer.inventory)
+                    {
+                        if (item == null || item.stack == 0) continue;
+                        int amtToAdd = item.maxStack - item.stack;
+                        if (item.stack > 0 && amtToAdd > 0 && !item.name.ToLower().Contains("coin"))
+                        {
+                            full = false;
+                            args.Player.GiveItem(item.type, item.name, item.width, item.height, amtToAdd);
+                        }
+                        i++;
+                    }
+                    if (!full)
+                        args.Player.SendSuccessMessage("Filled up all your items.");
+                    else
+                        args.Player.SendErrorMessage("Your inventory is already filled up.");
+                }
                 else
-                    args.Player.SendSuccessMessage("Filled up your {0}.", holding.name);
+                {
+                    Item holding = args.Player.TPlayer.inventory[args.TPlayer.selectedItem];
+                    int amtToAdd = holding.maxStack - holding.stack;
+                    if (holding.stack > 0 && amtToAdd > 0)
+                        args.Player.GiveItem(holding.type, holding.name, holding.width, holding.height, amtToAdd);
+                    if (amtToAdd == 0)
+                        args.Player.SendErrorMessage("Your {0} is already full.", holding.name);
+                    else
+                        args.Player.SendSuccessMessage("Filled up your {0}.", holding.name);
+                }
+                if (!args.Player.Group.HasPermission("facommands.nocd"))
+                {
+                    player.moreCD = config.moreCD;
+                }
             }
         }
         #endregion
@@ -270,33 +347,46 @@ namespace FACommands
         #region Slay
         private void FACSlay(CommandArgs args)
         {
-            if (args.Parameters.Count < 2)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /slay <player> <reason>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.slayCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count == 0)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.slayCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count < 2)
+                {
+                    args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /slay <player> <reason>");
+                }
+                else if (args.Parameters[0].Length == 0)
                 {
                     args.Player.SendErrorMessage("Invalid player!");
                 }
-                else if (list.Count > 1)
-                {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
-                }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    string reason = " " + string.Join(" ", args.Parameters.Skip(1));
-                    NetMessage.SendData((int)26, -1, -1, reason, tSPlayer.Index, 0f, 15000);
-                    args.Player.SendSuccessMessage("You just slayed {0}.", tSPlayer.Name);
+                    string text = args.Parameters[0];
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                    if (list.Count == 0)
+                    {
+                        args.Player.SendErrorMessage("Invalid player!");
+                    }
+                    else if (list.Count > 1)
+                    {
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
+                    }
+                    else
+                    {
+                        TSPlayer tSPlayer = list[0];
+                        string reason = " " + string.Join(" ", args.Parameters.Skip(1));
+                        NetMessage.SendData((int)26, -1, -1, reason, tSPlayer.Index, 0f, 15000);
+                        args.Player.SendSuccessMessage("You just slayed {0}.", tSPlayer.Name);
+                    }
+                    if (!args.Player.Group.HasPermission("facommands.nocd"))
+                    {
+                        player.slayCD = config.slayCD;
+                    }
                 }
             }
         }
@@ -306,12 +396,12 @@ namespace FACommands
         private void FACFart(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
-            if (player.GlobalCooldown == 0 || args.Player.Group.HasPermission("cd"));
+                if (player.fartCD == 0 || args.Player.Group.HasPermission("facommands.nocd"));
             else
             {
-                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.GlobalCooldown));
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.fartCD));
+                return;
             }
-
             {
                 if (args.Parameters.Count != 1)
                 {
@@ -353,10 +443,9 @@ namespace FACommands
                         args.Player.Name,
                         tSPlayer.Name
                         });                        
-                            if (!args.Player.Group.HasPermission("facommands.nocd"))
-                            
+                            if (!args.Player.Group.HasPermission("facommands.nocd"))                            
                         {
-                            player.GlobalCooldown = config.GlobalCooldown;
+                            player.fartCD = config.fartCD;
                         }                        
                     }
                 }
@@ -367,37 +456,50 @@ namespace FACommands
         #region Tickle
         private void FACTickle(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /tickle <player>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.tickleCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count > 1)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.tickleCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count != 1)
                 {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
+                    args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /tickle <player>");
+                }
+                else if (args.Parameters[0].Length == 0)
+                {
+                    args.Player.SendErrorMessage("Invalid player!");
                 }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    tSPlayer.SetBuff(2, 3600, true);
-                    args.Player.SendInfoMessage("You shouldn't tickle people to much... >.>", new object[]
-                {
-                        tSPlayer.Name
-                });
-                    TSPlayer.All.SendMessage(string.Format("{0} tickles {1}! Isn't that sweet? :P", args.Player.Name, tSPlayer.Name), Color.Thistle);
-                    TShock.Log.Info("{0} tickles {1}!", new object[]
+                    string text = args.Parameters[0];
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                    if (list.Count > 1)
                     {
-                        args.Player.Name,
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
+                    }
+                    else
+                    {
+                        TSPlayer tSPlayer = list[0];
+                        tSPlayer.SetBuff(2, 3600, true);
+                        args.Player.SendInfoMessage("You shouldn't tickle people to much... >.>", new object[]
+                    {
                         tSPlayer.Name
                     });
+                        TSPlayer.All.SendMessage(string.Format("{0} tickles {1}! Isn't that sweet? :P", args.Player.Name, tSPlayer.Name), Color.Thistle);
+                        TShock.Log.Info("{0} tickles {1}!", new object[]
+                        {
+                        args.Player.Name,
+                        tSPlayer.Name
+                        });
+                        if (!args.Player.Group.HasPermission("facommands.nocd"))
+                        {
+                            player.tickleCD = config.tickleCD;
+                        }
+                    }
                 }
             }
         }
@@ -406,41 +508,54 @@ namespace FACommands
         #region Poke
         private void FACPoke(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /poke <player>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.pokeCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count == 0)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.pokeCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count != 1)
+                {
+                    args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /poke <player>");
+                }
+                else if (args.Parameters[0].Length == 0)
                 {
                     args.Player.SendErrorMessage("Invalid player!");
                 }
-                else if (list.Count > 1)
-                {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
-                }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    tSPlayer.DamagePlayer(1);
-                    args.Player.SendInfoMessage("You poked {0}. Uh oh... should you run now?", new object[]
+                    string text = args.Parameters[0];
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                    if (list.Count == 0)
                     {
+                        args.Player.SendErrorMessage("Invalid player!");
+                    }
+                    else if (list.Count > 1)
+                    {
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
+                    }
+                    else
+                    {
+                        TSPlayer tSPlayer = list[0];
+                        tSPlayer.DamagePlayer(1);
+                        args.Player.SendInfoMessage("You poked {0}. Uh oh... should you run now?", new object[]
+                        {
                         tSPlayer.Name
-                    });
-                    TSPlayer.All.SendMessage(string.Format("{0} poked {1}. Well, that was lovely! :3", args.Player.Name, tSPlayer.Name), Color.LightSkyBlue);
-                    TShock.Log.Info("{0} poked {1}.", new object[]
-                    {
+                        });
+                        TSPlayer.All.SendMessage(string.Format("{0} poked {1}. Well, that was lovely! :3", args.Player.Name, tSPlayer.Name), Color.LightSkyBlue);
+                        TShock.Log.Info("{0} poked {1}.", new object[]
+                        {
                         args.Player.Name,
                         tSPlayer.Name
-                    });
+                        });
+                        if (!args.Player.Group.HasPermission("facommands.nocd"))
+                        {
+                            player.pokeCD = config.pokeCD;
+                        }
+                    }
                 }
             }
         }
@@ -449,41 +564,54 @@ namespace FACommands
         #region SPoke
         private void FACSPoke(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /spoke <player>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.spokeCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count == 0)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.spokeCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count != 1)
+                {
+                    args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /spoke <player>");
+                }
+                else if (args.Parameters[0].Length == 0)
                 {
                     args.Player.SendErrorMessage("Invalid player!");
                 }
-                else if (list.Count > 1)
-                {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
-                }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    tSPlayer.DamagePlayer(9001);
-                    args.Player.SendInfoMessage("You poked {0}. BOOM! BANG! PAW!", new object[]
+                    string text = args.Parameters[0];
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                    if (list.Count == 0)
                     {
+                        args.Player.SendErrorMessage("Invalid player!");
+                    }
+                    else if (list.Count > 1)
+                    {
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
+                    }
+                    else
+                    {
+                        TSPlayer tSPlayer = list[0];
+                        tSPlayer.DamagePlayer(9001);
+                        args.Player.SendInfoMessage("You poked {0}. BOOM! BANG! PAW!", new object[]
+                        {
                         tSPlayer.Name
-                    });
-                    TSPlayer.All.SendMessage(string.Format("{0} poked {1} in the tummy. KADUSH! Who is the next one?!", args.Player.Name, tSPlayer.Name), Color.MediumTurquoise);
-                    TShock.Log.Info("{0} super-poked {1}.", new object[]
-                    {
+                        });
+                        TSPlayer.All.SendMessage(string.Format("{0} poked {1} in the tummy. KADUSH! Who is the next one?!", args.Player.Name, tSPlayer.Name), Color.MediumTurquoise);
+                        TShock.Log.Info("{0} super-poked {1}.", new object[]
+                        {
                         args.Player.Name,
                         tSPlayer.Name
-                    });
+                        });
+                        if (!args.Player.Group.HasPermission("facommands.nocd"))
+                        {
+                            player.spokeCD = config.spokeCD;
+                        }
+                    }
                 }
             }
         }
@@ -492,44 +620,57 @@ namespace FACommands
         #region Hug
         private void FACHug(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /hug <player>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.hugCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count == 0)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.hugCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count != 1)
                 {
-                    args.Player.SendInfoMessage("You hugged your invisible friend {0}! Common! Get a life bro...", new object[]
-                    {
-                        text
-                    });
-                    TSPlayer.All.SendMessage(string.Format("{0} hugged " + (args.Player.TPlayer.Male ? "his" : "her") + " invisible friend {1}! Common! Really? Get a life bro...", args.Player.Name, text), Color.Chartreuse);
+                    args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /hug <player>");
                 }
-                else if (list.Count > 1)
+                else if (args.Parameters[0].Length == 0)
                 {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
+                    args.Player.SendErrorMessage("Invalid player!");
                 }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    args.Player.SendInfoMessage("You hugged {0}! You need love huh?", new object[]
+                    string text = args.Parameters[0];
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                    if (list.Count == 0)
                     {
+                        args.Player.SendInfoMessage("You hugged your invisible friend {0}! Common! Get a life bro...", new object[]
+                        {
+                        text
+                        });
+                        TSPlayer.All.SendMessage(string.Format("{0} hugged " + (args.Player.TPlayer.Male ? "his" : "her") + " invisible friend {1}! Common! Really? Get a life bro...", args.Player.Name, text), Color.Chartreuse);
+                    }
+                    else if (list.Count > 1)
+                    {
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
+                    }
+                    else
+                    {
+                        TSPlayer tSPlayer = list[0];
+                        args.Player.SendInfoMessage("You hugged {0}! You need love huh?", new object[]
+                        {
                         tSPlayer.Name
-                    });
-                    TSPlayer.All.SendMessage(string.Format("{0} hugged {1}! Awwwhhh... how sweet? <3", args.Player.Name, tSPlayer.Name), Color.Chartreuse);
-                    TShock.Log.Info("{0} hugged {1}! Awwwhhh... how sweet? <3", new object[]
-                    {
+                        });
+                        TSPlayer.All.SendMessage(string.Format("{0} hugged {1}! Awwwhhh... how sweet? <3", args.Player.Name, tSPlayer.Name), Color.Chartreuse);
+                        TShock.Log.Info("{0} hugged {1}! Awwwhhh... how sweet? <3", new object[]
+                        {
                         args.Player.Name,
                         tSPlayer.Name
-                    });
+                        });
+                        if (!args.Player.Group.HasPermission("facommands.nocd"))
+                        {
+                            player.hugCD = config.hugCD;
+                        }
+                    }
                 }
             }
         }
@@ -538,55 +679,68 @@ namespace FACommands
         #region Lick
         private void FACLick(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /lick <player>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.lickCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count == 0)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.lickCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count != 1)
                 {
-                    if (args.Parameters[0].ToLower() != "air")
-                    {
-                        args.Player.SendInfoMessage("You licked the air! Tasted like air... hum... {0} was not found...", new object[]
-                        {
-                            text
-                        });
-                        TSPlayer.All.SendMessage(string.Format("{0} licked the air! Tasted like air... hum...", args.Player.Name), Color.DarkOrchid);
-                    }
-                    else
-                    {
-                        args.Player.SendInfoMessage("You licked the air! Tasted like air... hum...", new object[]
-                        {
-                            text
-                        });
-                        TSPlayer.All.SendMessage(string.Format("{0} licked the air! Tasted like air... hum...", args.Player.Name), Color.DarkOrchid);
-                    }
+                    args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /lick <player>");
                 }
-                else if (list.Count > 1)
+                else if (args.Parameters[0].Length == 0)
                 {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
+                    args.Player.SendErrorMessage("Invalid player!");
                 }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    args.Player.SendInfoMessage("You licked {0}! Really...?", new object[]
+                    string text = args.Parameters[0];
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                    if (list.Count == 0)
                     {
+                        if (args.Parameters[0].ToLower() != "air")
+                        {
+                            args.Player.SendInfoMessage("You licked the air! Tasted like air... hum... {0} was not found...", new object[]
+                            {
+                            text
+                            });
+                            TSPlayer.All.SendMessage(string.Format("{0} licked the air! Tasted like air... hum...", args.Player.Name), Color.DarkOrchid);
+                        }
+                        else
+                        {
+                            args.Player.SendInfoMessage("You licked the air! Tasted like air... hum...", new object[]
+                            {
+                            text
+                            });
+                            TSPlayer.All.SendMessage(string.Format("{0} licked the air! Tasted like air... hum...", args.Player.Name), Color.DarkOrchid);
+                        }
+                    }
+                    else if (list.Count > 1)
+                    {
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
+                    }
+                    else
+                    {
+                        TSPlayer tSPlayer = list[0];
+                        args.Player.SendInfoMessage("You licked {0}! Really...?", new object[]
+                        {
                         tSPlayer.Name
-                    });
-                    TSPlayer.All.SendMessage(string.Format("{0} licked {1}! Ugh... X.X", args.Player.Name, tSPlayer.Name), Color.DarkOrchid);
-                    TShock.Log.Info("{0} licked {1}!", new object[]
-                    {
+                        });
+                        TSPlayer.All.SendMessage(string.Format("{0} licked {1}! Ugh... X.X", args.Player.Name, tSPlayer.Name), Color.DarkOrchid);
+                        TShock.Log.Info("{0} licked {1}!", new object[]
+                        {
                         args.Player.Name,
                         tSPlayer.Name
-                    });
+                        });
+                        if (!args.Player.Group.HasPermission("facommands.nocd"))
+                        {
+                            player.lickCD = config.lickCD;
+                        }
+                    }
                 }
             }
         }
@@ -595,67 +749,93 @@ namespace FACommands
         #region Facepalm
         private void FACPalm(CommandArgs args)
         {
-            args.Player.SendInfoMessage("You facepalmed.");
-            TSPlayer.All.SendMessage(string.Format("{0} facepalmed.", args.Player.Name), Color.Chocolate);
-            TShock.Log.Info("{0} facepalmed.", new object[]
+            var player = Playerlist[args.Player.Index];
+            if (player.facepalmCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
+            else
             {
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.facepalmCD));
+                return;
+            }
+            {
+                args.Player.SendInfoMessage("You facepalmed.");
+                TSPlayer.All.SendMessage(string.Format("{0} facepalmed.", args.Player.Name), Color.Chocolate);
+                TShock.Log.Info("{0} facepalmed.", new object[]
+                {
                 args.Player.Name
-            });
+                });
+                if (!args.Player.Group.HasPermission("facommands.nocd"))
+                {
+                    player.facepalmCD = config.facepalmCD;
+                }
+            }
         }
         #endregion
 
         #region Kiss
         private void FACKiss(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /kiss <player>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.kissCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count == 0)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.kissCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count != 1)
                 {
-                    if (args.Parameters[0].ToLower() != "air")
-                    {
-                        args.Player.SendInfoMessage("You kissed the air! {0} was not found... get a life bro...", new object[]
-                        {
-                            text
-                        });
-                        TSPlayer.All.SendMessage(string.Format("{0} kissed the air! The hell...?!", args.Player.Name), Color.Coral);
-                    }
-                    else
-                    {
-                        args.Player.SendInfoMessage("You kissed the air! WTF?!", new object[]
-                        {
-                            text
-                        });
-                        TSPlayer.All.SendMessage(string.Format("{0} kissed the air! The hell...?!", args.Player.Name), Color.Coral);
-                    }
+                    args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /kiss <player>");
                 }
-                else if (list.Count > 1)
+                else if (args.Parameters[0].Length == 0)
                 {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
+                    args.Player.SendErrorMessage("Invalid player!");
                 }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    args.Player.SendInfoMessage("You kissed {0}! RAAWWRRR! Are you horny?", new object[]
+                    string text = args.Parameters[0];
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                    if (list.Count == 0)
                     {
+                        if (args.Parameters[0].ToLower() != "air")
+                        {
+                            args.Player.SendInfoMessage("You kissed the air! {0} was not found... get a life bro...", new object[]
+                            {
+                            text
+                            });
+                            TSPlayer.All.SendMessage(string.Format("{0} kissed the air! The hell...?!", args.Player.Name), Color.Coral);
+                        }
+                        else
+                        {
+                            args.Player.SendInfoMessage("You kissed the air! WTF?!", new object[]
+                            {
+                            text
+                            });
+                            TSPlayer.All.SendMessage(string.Format("{0} kissed the air! The hell...?!", args.Player.Name), Color.Coral);
+                        }
+                    }
+                    else if (list.Count > 1)
+                    {
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
+                    }
+                    else
+                    {
+                        TSPlayer tSPlayer = list[0];
+                        args.Player.SendInfoMessage("You kissed {0}! RAAWWRRR! Are you horny?", new object[]
+                        {
                         tSPlayer.Name
-                    });
-                    TSPlayer.All.SendMessage(string.Format("{0} kisses {1}! Love is everywhere! <3", args.Player.Name, tSPlayer.Name), Color.Coral);
-                    TShock.Log.Info("{0} kisses {1}!", new object[]
-                    {
+                        });
+                        TSPlayer.All.SendMessage(string.Format("{0} kisses {1}! Love is everywhere! <3", args.Player.Name, tSPlayer.Name), Color.Coral);
+                        TShock.Log.Info("{0} kisses {1}!", new object[]
+                        {
                         args.Player.Name,
                         tSPlayer.Name
-                    });
+                        });
+                        if (!args.Player.Group.HasPermission("facommands.nocd"))
+                        {
+                            player.kissCD = config.kissCD;
+                        }
+                    }
                 }
             }
         }
@@ -664,42 +844,55 @@ namespace FACommands
         #region Baby
         private void FACBaby(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /baby <player>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.babyCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count > 1)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.babyCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count != 1)
                 {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
+                    args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /baby <player>");
                 }
-                else if (list[0].Group.Name == "admin" | list[0].Group.Name == "owner")
+                else if (args.Parameters[0].Length == 0)
                 {
-                    args.Player.SendErrorMessage("You can't make a baby with this player!");
+                    args.Player.SendErrorMessage("Invalid player!");
                 }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    tSPlayer.SetBuff(92, 3600, false);
-                    tSPlayer.SetBuff(103, 3600, true);
-                    args.Player.SendInfoMessage("... does it made you happy? I hope it's your true love... otherwise much fun with the alimony! :D", new object[]
-                {
-                        tSPlayer.Name
-                });
-                    TSPlayer.All.SendMessage(string.Format("{0} tried to make a baby (grinch) with {1}! awwhhh look! It's soooo cute! <3", args.Player.Name, tSPlayer.Name), Color.Firebrick);
-                    TShock.Log.Info("{0} tried to make a baby (grinch) with {1}!", new object[]
+                    string text = args.Parameters[0];
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                    if (list.Count > 1)
                     {
-                        args.Player.Name,
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
+                    }
+                    else if (list[0].Group.Name == "admin" | list[0].Group.Name == "owner")
+                    {
+                        args.Player.SendErrorMessage("You can't make a baby with this player!");
+                    }
+                    else
+                    {
+                        TSPlayer tSPlayer = list[0];
+                        tSPlayer.SetBuff(92, 3600, false);
+                        tSPlayer.SetBuff(103, 3600, true);
+                        args.Player.SendInfoMessage("... does it made you happy? I hope it's your true love... otherwise much fun with the alimony! :D", new object[]
+                    {
                         tSPlayer.Name
                     });
+                        TSPlayer.All.SendMessage(string.Format("{0} tried to make a baby (grinch) with {1}! awwhhh look! It's soooo cute! <3", args.Player.Name, tSPlayer.Name), Color.Firebrick);
+                        TShock.Log.Info("{0} tried to make a baby (grinch) with {1}!", new object[]
+                        {
+                        args.Player.Name,
+                        tSPlayer.Name
+                        });
+                        if (!args.Player.Group.HasPermission("facommands.nocd"))
+                        {
+                            player.babyCD = config.babyCD;
+                        }
+                    }
                 }
             }
         }
@@ -708,45 +901,58 @@ namespace FACommands
         #region Stab
         private void FACStab(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /stab <player>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.stabCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count == 0)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.stabCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count != 1)
                 {
-                    args.Player.SendInfoMessage("You stabbed your invisible friend {0}! You should train harder!", new object[]
-                    {
-                        text
-                    });
-                    TSPlayer.All.SendMessage(string.Format("{0} stabbed " + (args.Player.TPlayer.Male ? "his" : "her") + " invisible friend {1}! He should train harder...", args.Player.Name, text), Color.AliceBlue);
+                    args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /stab <player>");
                 }
-                else if (list.Count > 1)
+                else if (args.Parameters[0].Length == 0)
                 {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
+                    args.Player.SendErrorMessage("Invalid player!");
                 }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    tSPlayer.DamagePlayer(9001);
-                    args.Player.SendInfoMessage("You stabbed {0} for OVER 9000 damage! That was close!", new object[]
+                    string text = args.Parameters[0];
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                    if (list.Count == 0)
                     {
+                        args.Player.SendInfoMessage("You stabbed your invisible friend {0}! You should train harder!", new object[]
+                        {
+                        text
+                        });
+                        TSPlayer.All.SendMessage(string.Format("{0} stabbed " + (args.Player.TPlayer.Male ? "his" : "her") + " invisible friend {1}! He should train harder...", args.Player.Name, text), Color.AliceBlue);
+                    }
+                    else if (list.Count > 1)
+                    {
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
+                    }
+                    else
+                    {
+                        TSPlayer tSPlayer = list[0];
+                        tSPlayer.DamagePlayer(9001);
+                        args.Player.SendInfoMessage("You stabbed {0} for OVER 9000 damage! That was close!", new object[]
+                        {
                         tSPlayer.Name
-                    });
-                    TSPlayer.All.SendMessage(string.Format("{0} stabbed {1} mercilessly! GO CATCH HIM! O.O", args.Player.Name, tSPlayer.Name), Color.AliceBlue);
-                    TShock.Log.Info("{0} stabbed {1}.", new object[]
-                    {
+                        });
+                        TSPlayer.All.SendMessage(string.Format("{0} stabbed {1} mercilessly! GO CATCH HIM! O.O", args.Player.Name, tSPlayer.Name), Color.AliceBlue);
+                        TShock.Log.Info("{0} stabbed {1}.", new object[]
+                        {
                         args.Player.Name,
                         tSPlayer.Name
-                    });
+                        });
+                        if (!args.Player.Group.HasPermission("facommands.nocd"))
+                        {
+                            player.stabCD = config.stabCD;
+                        }
+                    }
                 }
             }
         }
@@ -755,55 +961,68 @@ namespace FACommands
         #region Love
         private void FACLove(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /love <player>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.loveCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count == 0)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.loveCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count != 1)
                 {
-                    if (args.Parameters[0].ToLower() != "air")
-                    {
-                        args.Player.SendInfoMessage("You love the air! {0} was not found... GO! Search your true love!", new object[]
-                        {
-                            text
-                        });
-                        TSPlayer.All.SendMessage(string.Format("{0} loves the air! You should get some friends... :O", args.Player.Name), Color.Pink);
-                    }
-                    else
-                    {
-                        args.Player.SendInfoMessage("You love the air! Really?", new object[]
-                        {
-                            text
-                        });
-                        TSPlayer.All.SendMessage(string.Format("{0} loves the air! Well... >.>", args.Player.Name), Color.Pink);
-                    }
+                    args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /love <player>");
                 }
-                else if (list.Count > 1)
+                else if (args.Parameters[0].Length == 0)
                 {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
+                    args.Player.SendErrorMessage("Invalid player!");
                 }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    args.Player.SendInfoMessage("You love {0}! hum... next step? ;)", new object[]
+                    string text = args.Parameters[0];
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                    if (list.Count == 0)
                     {
+                        if (args.Parameters[0].ToLower() != "air")
+                        {
+                            args.Player.SendInfoMessage("You love the air! {0} was not found... GO! Search your true love!", new object[]
+                            {
+                            text
+                            });
+                            TSPlayer.All.SendMessage(string.Format("{0} loves the air! You should get some friends... :O", args.Player.Name), Color.Pink);
+                        }
+                        else
+                        {
+                            args.Player.SendInfoMessage("You love the air! Really?", new object[]
+                            {
+                            text
+                            });
+                            TSPlayer.All.SendMessage(string.Format("{0} loves the air! Well... >.>", args.Player.Name), Color.Pink);
+                        }
+                    }
+                    else if (list.Count > 1)
+                    {
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
+                    }
+                    else
+                    {
+                        TSPlayer tSPlayer = list[0];
+                        args.Player.SendInfoMessage("You love {0}! hum... next step? ;)", new object[]
+                        {
                         tSPlayer.Name
-                    });
-                    TSPlayer.All.SendMessage(string.Format("{0} loves {1}! Oehlalah... ready for the next step? <3", args.Player.Name, tSPlayer.Name), Color.Pink);
-                    TShock.Log.Info("{0} loves {1}!", new object[]
-                    {
+                        });
+                        TSPlayer.All.SendMessage(string.Format("{0} loves {1}! Oehlalah... ready for the next step? <3", args.Player.Name, tSPlayer.Name), Color.Pink);
+                        TShock.Log.Info("{0} loves {1}!", new object[]
+                        {
                         args.Player.Name,
                         tSPlayer.Name
-                    });
+                        });
+                        if (!args.Player.Group.HasPermission("facommands.nocd"))
+                        {
+                            player.loveCD = config.loveCD;
+                        }
+                    }
                 }
             }
         }
@@ -812,82 +1031,121 @@ namespace FACommands
         #region Faceplant
         private void FACPlant(CommandArgs args)
         {
-            if (!args.Player.RealPlayer)
-            {
-                args.Player.SendInfoMessage("You planted your face on the ground. Serious man...?");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.faceplantCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                args.Player.DamagePlayer(1000);
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.faceplantCD));
+                return;
             }
-            TSPlayer.All.SendMessage(string.Format("{0} planted " + (args.Player.TPlayer.Male ? "his" : "her") + " face on the ground. Are you crazy?!", args.Player.Name), Color.BlanchedAlmond);
+            {
+                if (!args.Player.RealPlayer)
+                {
+                    args.Player.SendInfoMessage("You planted your face on the ground. Serious man...?");
+                }
+                else
+                {
+                    args.Player.DamagePlayer(1000);
+                }
+                TSPlayer.All.SendMessage(string.Format("{0} planted " + (args.Player.TPlayer.Male ? "his" : "her") + " face on the ground. Are you crazy?!", args.Player.Name), Color.BlanchedAlmond);
+            }
+            if (!args.Player.Group.HasPermission("facommands.nocd"))
+            {
+                player.faceplantCD = config.faceplantCD;
+            }
         }
         #endregion
 
         #region Slapall
         private void FACSlap(CommandArgs args)
         {
-            if (!args.Player.RealPlayer)
+            var player = Playerlist[args.Player.Index];
+            if (player.slapallCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
+            else
             {
-                args.Player.SendInfoMessage("You slapped everyone! That stings!");
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.slapallCD));
+                return;
             }
-            TSPlayer.All.SendMessage(string.Format("{0} slapped you (along with everyone else)! THE HELL! CATCH HIM! :O", args.Player.Name), Color.BlanchedAlmond);
-            TSPlayer.All.DamagePlayer(15);
+            {
+                if (!args.Player.RealPlayer)
+                {
+                    args.Player.SendInfoMessage("You slapped everyone! That stings!");
+                }
+                TSPlayer.All.SendMessage(string.Format("{0} slapped you (along with everyone else)! THE HELL! CATCH HIM! :O", args.Player.Name), Color.BlanchedAlmond);
+                TSPlayer.All.DamagePlayer(15);
+            }
+            if (!args.Player.Group.HasPermission("facommands.nocd"))
+            {
+                player.slapallCD = config.slapallCD;
+            }
         }
         #endregion
 
         #region Gift
         private void FACGift(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax: /gift <player>");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.giftCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                List<TSPlayer> list = TShock.Utils.FindPlayer(args.Parameters[0]);
-                if (list.Count == 0)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.giftCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count != 1)
                 {
-                    args.Player.SendErrorMessage("No players found by that name.");
-                }
-                else if (list.Count > 1)
-                {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
+                    args.Player.SendErrorMessage("Invalid syntax: /gift <player>");
                 }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    Random random = new Random();
-                    if (random.Next(2) == 0)
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(args.Parameters[0]);
+                    if (list.Count == 0)
                     {
-                        Item itemById = TShock.Utils.GetItemById(1922);
-                        tSPlayer.GiveItem(itemById.type, itemById.name, itemById.width, itemById.height, itemById.maxStack, 0);
-                        tSPlayer.SendInfoMessage("{0} gave you Coal! You were a naughty {1}...", new object[]
-                        {
-                            args.Player.Name,
-                            tSPlayer.TPlayer.Male ? "boy" : "girl"
-                        });
-                        args.Player.SendSuccessMessage("You gave {0} Coal! {0} was a naughty {1}...", new object[]
-                        {
-                            tSPlayer.Name,
-                            tSPlayer.TPlayer.Male ? "boy" : "girl"
-                        });
+                        args.Player.SendErrorMessage("No players found by that name.");
+                    }
+                    else if (list.Count > 1)
+                    {
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
                     }
                     else
                     {
-                        Item itemById = TShock.Utils.GetItemById(1869);
-                        tSPlayer.GiveItem(itemById.type, itemById.name, itemById.width, itemById.height, itemById.stack, 1);
-                        tSPlayer.SendInfoMessage("{0} gave you a Present! You were a good {1}...", new object[]
+                        TSPlayer tSPlayer = list[0];
+                        Random random = new Random();
+                        if (random.Next(2) == 0)
                         {
+                            Item itemById = TShock.Utils.GetItemById(1922);
+                            tSPlayer.GiveItem(itemById.type, itemById.name, itemById.width, itemById.height, itemById.maxStack, 0);
+                            tSPlayer.SendInfoMessage("{0} gave you Coal! You were a naughty {1}...", new object[]
+                            {
                             args.Player.Name,
                             tSPlayer.TPlayer.Male ? "boy" : "girl"
-                        });
-                        args.Player.SendSuccessMessage("You gave {0} a Present! {0} was a good {1}...", new object[]
-                        {
+                            });
+                            args.Player.SendSuccessMessage("You gave {0} Coal! {0} was a naughty {1}...", new object[]
+                            {
                             tSPlayer.Name,
                             tSPlayer.TPlayer.Male ? "boy" : "girl"
-                        });
+                            });
+                        }
+                        else
+                        {
+                            Item itemById = TShock.Utils.GetItemById(1869);
+                            tSPlayer.GiveItem(itemById.type, itemById.name, itemById.width, itemById.height, itemById.stack, 1);
+                            tSPlayer.SendInfoMessage("{0} gave you a Present! You were a good {1}...", new object[]
+                            {
+                            args.Player.Name,
+                            tSPlayer.TPlayer.Male ? "boy" : "girl"
+                            });
+                            args.Player.SendSuccessMessage("You gave {0} a Present! {0} was a good {1}...", new object[]
+                            {
+                            tSPlayer.Name,
+                            tSPlayer.TPlayer.Male ? "boy" : "girl"
+                            });
+                            if (!args.Player.Group.HasPermission("facommands.nocd"))
+                            {
+                                player.giftCD = config.giftCD;
+                            }
+                        }
                     }
                 }
             }
@@ -897,51 +1155,64 @@ namespace FACommands
         #region Disturb
         private void FACDisturb(CommandArgs args)
         {
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /disturb <player>");
-            }
-            else if (args.Parameters[0].Length == 0)
-            {
-                args.Player.SendErrorMessage("Invalid player!");
-            }
+            var player = Playerlist[args.Player.Index];
+            if (player.disturbCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
             else
             {
-                string text = args.Parameters[0];
-                List<TSPlayer> list = TShock.Utils.FindPlayer(text);
-                if (list.Count == 0)
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.disturbCD));
+                return;
+            }
+            {
+                if (args.Parameters.Count != 1)
                 {
-                    args.Player.SendErrorMessage("No players matched!");
+                    args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /disturb <player>");
                 }
-                else if (list.Count > 1)
+                else if (args.Parameters[0].Length == 0)
                 {
-                    TShock.Utils.SendMultipleMatchError(args.Player, from p in list
-                                                                     select p.Name);
-                }
-                else if (list[0].Group.Name == "admin" | list[0].Group.Name == "owner")
-                {
-                    args.Player.SendErrorMessage("You cannot disturb this player!");
+                    args.Player.SendErrorMessage("Invalid player!");
                 }
                 else
                 {
-                    TSPlayer tSPlayer = list[0];
-                    tSPlayer.SetBuff(26, 900, true);
-                    tSPlayer.SetBuff(30, 900, true);
-                    tSPlayer.SetBuff(31, 900, true);
-                    tSPlayer.SetBuff(32, 900, true);
-                    tSPlayer.SetBuff(103, 900, true);
-                    tSPlayer.SetBuff(115, 900, true);
-                    tSPlayer.SetBuff(120, 900, true);
-                    args.Player.SendInfoMessage("You disturbed {0}! You feel slightly better now...", new object[]
+                    string text = args.Parameters[0];
+                    List<TSPlayer> list = TShock.Utils.FindPlayer(text);
+                    if (list.Count == 0)
                     {
+                        args.Player.SendErrorMessage("No players matched!");
+                    }
+                    else if (list.Count > 1)
+                    {
+                        TShock.Utils.SendMultipleMatchError(args.Player, from p in list
+                                                                         select p.Name);
+                    }
+                    else if (list[0].Group.Name == "admin" | list[0].Group.Name == "owner")
+                    {
+                        args.Player.SendErrorMessage("You cannot disturb this player!");
+                    }
+                    else
+                    {
+                        TSPlayer tSPlayer = list[0];
+                        tSPlayer.SetBuff(26, 900, true);
+                        tSPlayer.SetBuff(30, 900, true);
+                        tSPlayer.SetBuff(31, 900, true);
+                        tSPlayer.SetBuff(32, 900, true);
+                        tSPlayer.SetBuff(103, 900, true);
+                        tSPlayer.SetBuff(115, 900, true);
+                        tSPlayer.SetBuff(120, 900, true);
+                        args.Player.SendInfoMessage("You disturbed {0}! You feel slightly better now...", new object[]
+                        {
                         tSPlayer.Name
-                    });
-                    TSPlayer.All.SendMessage(string.Format("{0} disturbed {1}! Is he angry now? huh?", args.Player.Name, tSPlayer.Name), Color.Crimson);
-                    TShock.Log.Info("{0} disturbed {1}.", new object[]
-                    {
+                        });
+                        TSPlayer.All.SendMessage(string.Format("{0} disturbed {1}! Is he angry now? huh?", args.Player.Name, tSPlayer.Name), Color.Crimson);
+                        TShock.Log.Info("{0} disturbed {1}.", new object[]
+                        {
                         args.Player.Name,
                         tSPlayer.Name
-                    });
+                        });
+                        if (!args.Player.Group.HasPermission("facommands.nocd"))
+                        {
+                            player.disturbCD = config.disturbCD;
+                        }
+                    }
                 }
             }
         }
@@ -1093,7 +1364,23 @@ namespace FACommands
         #region Config Value
         public class Config
         {
-            public int GlobalCooldown = 0;
+            public int moreCD = 120;
+            public int slayCD = 120;
+            public int fartCD = 60;
+            public int tickleCD = 60;
+            public int pokeCD = 60;
+            public int spokeCD = 120;
+            public int hugCD = 30;
+            public int lickCD = 30;
+            public int facepalmCD = 30;
+            public int kissCD = 30;
+            public int babyCD = 300;
+            public int stabCD = 120;
+            public int loveCD = 30;
+            public int faceplantCD = 300;
+            public int slapallCD = 120;
+            public int giftCD = 300;
+            public int disturbCD = 300;
         }
         #endregion
 
