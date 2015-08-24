@@ -306,8 +306,12 @@ namespace FACommands
         private void FACFart(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
-            
-                if (player.GlobalCooldown == 0 || args.Player.Group.HasPermission("facommands.nocd"))
+            if (player.GlobalCooldown == 0 || args.Player.Group.HasPermission("cd"));
+            else
+            {
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.GlobalCooldown));
+            }
+
             {
                 if (args.Parameters.Count != 1)
                 {
@@ -350,14 +354,10 @@ namespace FACommands
                         tSPlayer.Name
                         });                        
                             if (!args.Player.Group.HasPermission("facommands.nocd"))
-                            if (player.TSPlayer == null)
+                            
                         {
                             player.GlobalCooldown = config.GlobalCooldown;
-                        }
-                        else
-                        {
-                            args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (config.GlobalCooldown));
-                        }
+                        }                        
                     }
                 }
             }
