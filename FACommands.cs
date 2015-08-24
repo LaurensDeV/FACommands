@@ -309,11 +309,6 @@ namespace FACommands
 
             if (player.GlobalCooldown == 0)
             {
-                if (!args.Player.Group.HasPermission("facommands.nocd"))
-                {
-                    player.GlobalCooldown = config.GlobalCooldown;
-                }
-
                 if (args.Parameters.Count != 1)
                 {
                     args.Player.SendErrorMessage("Invalid syntax! Proper syntax: /fart <player>");
@@ -354,6 +349,14 @@ namespace FACommands
                         args.Player.Name,
                         tSPlayer.Name
                         });
+                        if (!args.Player.Group.HasPermission("facommands.nocd"))
+                        {
+                            player.GlobalCooldown = config.GlobalCooldown;
+                        }
+                        else
+                        {
+                            args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.GlobalCooldown));
+                        }
                     }
                 }
             }
