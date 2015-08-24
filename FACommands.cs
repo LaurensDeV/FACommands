@@ -250,7 +250,7 @@ namespace FACommands
                     TShock.Utils.SendMultipleMatchError(args.Player, from p in list
                     select p.Name);
                 }
-                else if (list[0].Group.Name == "superadmin" | list[0].Group.Name == "owner")
+                else if (list[0].Group.Name == "admin" | list[0].Group.Name == "owner")
                 {
                     args.Player.SendErrorMessage("You cannot fart this player!");
                 }
@@ -575,6 +575,10 @@ namespace FACommands
                     TShock.Utils.SendMultipleMatchError(args.Player, from p in list
                                                                      select p.Name);
                 }
+                else if (list[0].Group.Name == "admin" | list[0].Group.Name == "owner")
+                {
+                    args.Player.SendErrorMessage("You can't make a baby with this player!");
+                }
                 else
                 {
                     TSPlayer tSPlayer = list[0];
@@ -796,7 +800,7 @@ namespace FACommands
 					TShock.Utils.SendMultipleMatchError(args.Player, from p in list
 					select p.Name);
 				}
-				else if (list[0].Group.Name == "superadmin" | list[0].Group.Name == "owner")
+				else if (list[0].Group.Name == "admin" | list[0].Group.Name == "owner")
                 {
 					args.Player.SendErrorMessage("You cannot disturb this player!");
 				}
