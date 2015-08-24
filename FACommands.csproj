@@ -26,11 +26,16 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Reference\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="TerrariaServer">
       <HintPath>..\Reference\TerrariaServer.exe</HintPath>
     </Reference>
@@ -39,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FACPlayer.cs" />
     <Compile Include="FACommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
