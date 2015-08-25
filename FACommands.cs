@@ -52,7 +52,7 @@ namespace FACommands
         {
             get
             {
-                return new Version(1, 1, 9);
+                return new Version(1, 2, 0);
             }
         }
 
@@ -192,6 +192,7 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.reload", Reload_Config, "facreload") { AllowServer = true, HelpText = "Reloads FACommands cooldown config file." });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACHistory, "h") { AllowServer = false, HelpText = "Short command for /history" });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACClear, "ca") { HelpText = "Short command for clearing up items and projectiles." });
+            Commands.ChatCommands.Add(new Command("facommands.ranklist", FACRanklist, "ranklist") { AllowServer = false, HelpText = "Shows you all available ranks listed from lowest to highest." });
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP1, "p1") { AllowServer = false, HelpText = "Short command for WorldEdit //point1" });
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP2, "p2") { AllowServer = false, HelpText = "Short command for WorldEdit //point2" });
             Commands.ChatCommands.Add(new Command("facommands.more", FACMore, "more") { AllowServer = false, HelpText = "Fill up all your items to max stack." });
@@ -246,6 +247,13 @@ namespace FACommands
             Commands.HandleCommand(args.Player, "/clear item 100000");
             Commands.HandleCommand(args.Player, "/clear projectile 100000");
         }
+        #endregion
+
+        #region Ranklist
+        private void FACRanklist(CommandArgs args)
+        {          
+                args.Player.SendInfoMessage(string.Format("Available ranks listed from lowest to highest: {0}", config.ranklist));              
+            }        
         #endregion
 
         #region More(CD)
@@ -1366,6 +1374,7 @@ namespace FACommands
         #region Config Value
         public class Config
         {
+            public string[] ranklist = { "Traveller, Citizen, Soldier, Fighter, Warrior, Champion, Gladiator, Commander, Warmaster, Hero, Executor, Lord, Legend, Demigod, Immortal, Unattainable, Keeper of Gods" };
             public int moreCD = 120;
             public int slayCD = 120;
             public int fartCD = 60;

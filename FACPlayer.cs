@@ -16,6 +16,7 @@ namespace FACommands
     {
         public int Index { get; set; }
         public TSPlayer TSPlayer { get { return TShock.Players[Index]; } }
+        public string ranklist { get; set; }
         public int moreCD { get; set; }
         public int slayCD { get; set; }
         public int fartCD { get; set; }
