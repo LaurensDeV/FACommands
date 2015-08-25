@@ -1376,7 +1376,7 @@ namespace FACommands
         {
             public string[] ranklist = { "Traveller, Citizen, Soldier, Fighter, Warrior, Champion, Gladiator, Commander, Warmaster, Hero, Executor, Lord, Legend, Demigod, Immortal, Unattainable, Keeper of Gods" };
             public int moreCD = 120;
-            public int slayCD = 120;
+            public int slayCD = 60;
             public int fartCD = 60;
             public int tickleCD = 60;
             public int pokeCD = 60;
@@ -1388,10 +1388,10 @@ namespace FACommands
             public int babyCD = 300;
             public int stabCD = 120;
             public int loveCD = 30;
-            public int faceplantCD = 300;
+            public int faceplantCD = 120;
             public int slapallCD = 120;
             public int giftCD = 300;
-            public int disturbCD = 300;
+            public int disturbCD = 120;
         }
         #endregion
 
