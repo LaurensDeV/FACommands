@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Using
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Timers;
 using Terraria;
 using TShockAPI;
+#endregion
 
 namespace FACommands
 {

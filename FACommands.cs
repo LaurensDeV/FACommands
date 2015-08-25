@@ -1,3 +1,4 @@
+#region Using
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using Terraria;
 using TerrariaApi.Server;
 using TShockAPI;
 using TShockAPI.DB;
+#endregion
 
 namespace FACommands
 {
@@ -246,7 +248,7 @@ namespace FACommands
         }
         #endregion
 
-        #region More
+        #region More(CD)
         private void FACMore(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -344,7 +346,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Slay
+        #region Slay(CD)
         private void FACSlay(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -392,7 +394,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Fart
+        #region Fart(CD)
         private void FACFart(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -453,7 +455,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Tickle
+        #region Tickle(CD)
         private void FACTickle(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -505,7 +507,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Poke
+        #region Poke(CD)
         private void FACPoke(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -561,7 +563,7 @@ namespace FACommands
         }
         #endregion
 
-        #region SPoke
+        #region SPoke(CD)
         private void FACSPoke(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -617,7 +619,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Hug
+        #region Hug(CD)
         private void FACHug(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -676,7 +678,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Lick
+        #region Lick(CD)
         private void FACLick(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -746,7 +748,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Facepalm
+        #region Facepalm(CD)
         private void FACPalm(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -771,7 +773,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Kiss
+        #region Kiss(CD)
         private void FACKiss(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -841,7 +843,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Baby
+        #region Baby(CD)
         private void FACBaby(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -898,7 +900,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Stab
+        #region Stab(CD)
         private void FACStab(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -958,7 +960,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Love
+        #region Love(CD)
         private void FACLove(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -1028,7 +1030,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Faceplant
+        #region Faceplant(CD)
         private void FACPlant(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -1056,7 +1058,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Slapall
+        #region Slapall(CD)
         private void FACSlap(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -1081,7 +1083,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Gift
+        #region Gift(CD)
         private void FACGift(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
@@ -1152,7 +1154,7 @@ namespace FACommands
         }
         #endregion
 
-        #region Disturb
+        #region Disturb(CD)
         private void FACDisturb(CommandArgs args)
         {
             var player = Playerlist[args.Player.Index];
