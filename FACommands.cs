@@ -191,13 +191,13 @@ namespace FACommands
         {
             Commands.ChatCommands.Add(new Command("facommands.reload", Reload_Config, "facreload") { AllowServer = true, HelpText = "Reloads FACommands cooldown config file." });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACHistory, "h") { AllowServer = false, HelpText = "Short command for /history" });
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACClear, "ca") { HelpText = "Short command for clearing up items and projectiles." });
+            Commands.ChatCommands.Add(new Command("facommands.staff", FACClear, "ca") { AllowServer = true, HelpText = "Short command for clearing up items and projectiles." });
             Commands.ChatCommands.Add(new Command("facommands.ranklist", FACRanklist, "ranklist") { AllowServer = false, HelpText = "Shows you all available ranks listed from lowest to highest." });
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP1, "p1") { AllowServer = false, HelpText = "Short command for WorldEdit //point1" });
             Commands.ChatCommands.Add(new Command("worldedit.selection.point", FACP2, "p2") { AllowServer = false, HelpText = "Short command for WorldEdit //point2" });
             Commands.ChatCommands.Add(new Command("facommands.more", FACMore, "more") { AllowServer = false, HelpText = "Fill up all your items to max stack." });
             Commands.ChatCommands.Add(new Command("facommands.npc", FACNPC, "npcr") { AllowServer = false, HelpText = "Respawns all Town NPC's at your location." });
-            Commands.ChatCommands.Add(new Command("facommands.obc", FACOBC, "obc") { HelpText = "Owner Broadcast." });
+            Commands.ChatCommands.Add(new Command("facommands.obc", FACOBC, "obc") { AllowServer = true, HelpText = "Owner Broadcast." });
             Commands.ChatCommands.Add(new Command("facommands.slay", FACSlay, "slay") { AllowServer = false, HelpText = "Slay them DOWN! ALL!" });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACFart, "fart") { AllowServer = false, HelpText = "Woah! That fart will blow you away!" });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACTickle, "tickle") { AllowServer = false, HelpText = "Tickle them down!" });
@@ -214,8 +214,8 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.fun", FACKiss, "kiss") { AllowServer = false, HelpText = "RAAWWWRRRR! What next?!" });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACSlap, "slapall") { AllowServer = false, HelpText = "Dusty sticks incomming!" });
             Commands.ChatCommands.Add(new Command("facommands.gift", FACGift, "gift") { AllowServer = false, HelpText = "If they were good!" });
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACUI, "uinfo") { AllowServer = false, HelpText = "Lists detailed informations about players." });
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { AllowServer = false, HelpText = "Lists detailed informations about banned players." });
+            Commands.ChatCommands.Add(new Command("facommands.staff", FACUI, "uinfo") { AllowServer = true, HelpText = "Lists detailed informations about players." });
+            Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { AllowServer = true, HelpText = "Lists detailed informations about banned players." });
             ReadConfig();
         }
         #endregion
