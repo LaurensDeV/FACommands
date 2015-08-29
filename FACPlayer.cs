@@ -34,6 +34,15 @@ namespace FACommands
         public int slapallCD { get; set; }
         public int giftCD { get; set; }
         public int disturbCD { get; set; }
+        public int playCD { get; set; }
+        public int endCD { get; set; }
+        public int timedayCD { get; set; }
+        public int timenightCD { get; set; }
+        public int gamesCD { get; set; }
+        public int tutorialCD { get; set; }
+        public int bankCD { get; set; }
+        public int dungeonresetCD { get; set; }
+        public int spleefresetCD { get; set; }
         public FACPlayer(int index)
         {
             this.Index = index;

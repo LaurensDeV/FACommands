@@ -52,7 +52,7 @@ namespace FACommands
         {
             get
             {
-                return new Version(1, 2, 0);
+                return new Version(1, 2, 1);
             }
         }
 
@@ -181,6 +181,42 @@ namespace FACommands
                     {
                         player.disturbCD--;
                     }
+                    if (player.playCD > 0)
+                    {
+                        player.playCD--;
+                    }
+                    if (player.endCD > 0)
+                    {
+                        player.endCD--;
+                    }
+                    if (player.timedayCD > 0)
+                    {
+                        player.timedayCD--;
+                    }
+                    if (player.timenightCD > 0)
+                    {
+                        player.timenightCD--;
+                    }
+                    if (player.gamesCD > 0)
+                    {
+                        player.gamesCD--;
+                    }
+                    if (player.tutorialCD > 0)
+                    {
+                        player.tutorialCD--;
+                    }
+                    if (player.bankCD > 0)
+                    {
+                        player.bankCD--;
+                    }
+                    if (player.dungeonresetCD > 0)
+                    {
+                        player.dungeonresetCD--;
+                    }
+                    if (player.spleefresetCD > 0)
+                    {
+                        player.spleefresetCD--;
+                    }
                 }
             }
         }
@@ -190,6 +226,15 @@ namespace FACommands
         private void OnInitialize(EventArgs args)
         {
             Commands.ChatCommands.Add(new Command("facommands.reload", Reload_Config, "facreload") { AllowServer = true, HelpText = "Reloads FACommands cooldown config file." });
+            Commands.ChatCommands.Add(new Command("facommands.staff", FACDungeonReset, "dungeonreset") { AllowServer = false, HelpText = "Reset command for Dungeon." });
+            Commands.ChatCommands.Add(new Command("facommands.play", FACSpleefReset, "spleefreset") { AllowServer = false, HelpText = "Reset command for the Spleef minigame!" });
+            Commands.ChatCommands.Add(new Command("facommands.play", FACPlay, "play") { AllowServer = false, HelpText = "Play is used for the minigames!" });
+            Commands.ChatCommands.Add(new Command("facommands.end", FACEnd, "end") { AllowServer = false, HelpText = "End is used for the minigames!" });
+            Commands.ChatCommands.Add(new Command("facommands.day", FACTimeDay, "day") { AllowServer = false, HelpText = "Sets the server time to day." });
+            Commands.ChatCommands.Add(new Command("facommands.night", FACTimeNight, "night") { AllowServer = false, HelpText = "Sets the server time to night." });
+            Commands.ChatCommands.Add(new Command("facommands.play", FACGames, "games") { AllowServer = false, HelpText = "Teleports you to the minigames center!" });
+            Commands.ChatCommands.Add(new Command("facommands.tutorial", FACTutorial, "tutorial") { AllowServer = false, HelpText = "Teleports you to the very important tutorial!" });
+            Commands.ChatCommands.Add(new Command("facommands.bank", FACBB, "bb") { AllowServer = false, HelpText = "Shows you your current bank balance." });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACHistory, "h") { AllowServer = false, HelpText = "Short command for /history" });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACClear, "ca") { AllowServer = true, HelpText = "Short command for clearing up items and projectiles." });
             Commands.ChatCommands.Add(new Command("facommands.ranklist", FACRanklist, "ranklist") { AllowServer = false, HelpText = "Shows you all available ranks listed from lowest to highest." });
@@ -218,6 +263,174 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { AllowServer = true, HelpText = "Lists detailed informations about banned players." });
             ReadConfig();
         }
+        #endregion
+
+        #region Dungeon Reset(CD)
+        private void FACDungeonReset(CommandArgs args)
+        {
+            var player = Playerlist[args.Player.Index];
+            if (player.dungeonresetCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
+            else
+            {
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.dungeonresetCD));
+                return;
+            }
+            Commands.HandleCommand(args.Player, "//schematic load Dungeon");
+            Commands.HandleCommand(args.Player, "//region Dungeon");
+            Commands.HandleCommand(args.Player, "//paste");
+            TSPlayer.All.SendMessage("[Dungeon] has been reseted! </warp Dungeon>", Color.DeepPink);
+            if (!args.Player.Group.HasPermission("facommands.nocd"))
+            {
+                player.dungeonresetCD = config.dungeonresetCD;
+            }
+        }
+        #endregion
+
+        #region Spleef Reset(CD)
+        private void FACSpleefReset(CommandArgs args)
+        {
+            var player = Playerlist[args.Player.Index];
+            if (player.spleefresetCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
+            else
+            {
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.spleefresetCD));
+                return;
+            }
+            Commands.HandleCommand(args.Player, "//schematic load Spleef");
+            Commands.HandleCommand(args.Player, "//region Spleef");
+            Commands.HandleCommand(args.Player, "//paste");
+            TSPlayer.All.SendMessage("[Spleef] has been reseted! </warp Spleef> to play!", Color.DeepPink);
+            if (!args.Player.Group.HasPermission("facommands.nocd"))
+            {
+                player.spleefresetCD = config.spleefresetCD;
+            }
+        }
+        #endregion
+
+        #region Play/End(CD)
+        private void FACPlay(CommandArgs args)
+        {
+            var player = Playerlist[args.Player.Index];
+            if (player.playCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
+            else
+            {
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.playCD));
+                return;
+            }
+            Commands.HandleCommand(args.Player, "/invsee BOT");
+            if (!args.Player.Group.HasPermission("facommands.nocd"))
+            {
+                player.playCD = config.playCD;
+            }
+        }
+
+        private void FACEnd(CommandArgs args)
+        {
+            var player = Playerlist[args.Player.Index];
+            if (player.endCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
+            else
+            {
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.endCD));
+                return;
+            }
+            Commands.HandleCommand(args.Player, "/invsee");
+            if (!args.Player.Group.HasPermission("facommands.nocd"))
+            {
+                player.endCD = config.endCD;
+            }
+        }
+        #endregion
+
+        #region Time(CD)
+        private void FACTimeDay(CommandArgs args)
+        {
+            var player = Playerlist[args.Player.Index];
+            if (player.timedayCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
+            else
+            {
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.timedayCD));
+                return;
+            }
+            Commands.HandleCommand(args.Player, "/time day");
+            if (!args.Player.Group.HasPermission("facommands.nocd"))
+            {
+                player.timedayCD = config.timedayCD;
+            }
+        }
+
+        private void FACTimeNight(CommandArgs args)
+        {
+            var player = Playerlist[args.Player.Index];
+            if (player.timenightCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
+            else
+            {
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.timenightCD));
+                return;
+            }
+            Commands.HandleCommand(args.Player, "/time night");
+            if (!args.Player.Group.HasPermission("facommands.nocd"))
+            {
+                player.timenightCD = config.timenightCD;
+            }
+        }
+        #endregion
+
+        #region Games(CD)
+        private void FACGames(CommandArgs args)
+        {
+            var player = Playerlist[args.Player.Index];
+            if (player.gamesCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
+            else
+            {
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.gamesCD));
+                return;
+            }
+            Commands.HandleCommand(args.Player, "/warp Games");
+            if (!args.Player.Group.HasPermission("facommands.nocd"))
+            {
+                player.gamesCD = config.gamesCD;
+            }
+        }
+        #endregion
+
+        #region Tutorial(CD)
+        private void FACTutorial(CommandArgs args)
+        {
+            var player = Playerlist[args.Player.Index];
+            if (player.tutorialCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
+            else
+            {
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.tutorialCD));
+                return;
+            }
+            {
+                Commands.HandleCommand(args.Player, "/warp Tutorial");
+                if (!args.Player.Group.HasPermission("facommands.nocd"))
+                {
+                    player.tutorialCD = config.tutorialCD;
+                }
+            }
+        }
+        #endregion
+
+        #region BB(CD)
+        private void FACBB(CommandArgs args)
+        {
+            var player = Playerlist[args.Player.Index];
+            if (player.bankCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
+            else
+            {
+                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.bankCD));
+                return;
+            }
+            {
+                Commands.HandleCommand(args.Player, "/bank bal");
+                if (!args.Player.Group.HasPermission("facommands.nocd"))
+                {
+                    player.bankCD = config.bankCD;
+                }
+            }
+        }  
         #endregion
 
         #region History
@@ -1392,6 +1605,15 @@ namespace FACommands
             public int slapallCD = 120;
             public int giftCD = 300;
             public int disturbCD = 120;
+            public int playCD = 30;
+            public int endCD = 30;
+            public int timedayCD = 1800;
+            public int timenightCD = 1800;
+            public int gamesCD = 60;
+            public int tutorialCD = 60;
+            public int bankCD = 10;
+            public int dungeonresetCD = 3600;
+            public int spleefresetCD = 180;
         }
         #endregion
 
