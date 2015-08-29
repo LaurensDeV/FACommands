@@ -227,12 +227,12 @@ namespace FACommands
         {
             Commands.ChatCommands.Add(new Command("facommands.reload", Reload_Config, "facreload") { AllowServer = true, HelpText = "Reloads FACommands cooldown config file." });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACDungeonReset, "dungeonreset") { AllowServer = false, HelpText = "Reset command for Dungeon." });
-            Commands.ChatCommands.Add(new Command("facommands.play", FACSpleefReset, "spleefreset") { AllowServer = false, HelpText = "Reset command for the Spleef minigame!" });
+            Commands.ChatCommands.Add(new Command("facommands.spleef", FACSpleefReset, "spleefreset") { AllowServer = false, HelpText = "Reset command for the Spleef minigame!" });
             Commands.ChatCommands.Add(new Command("facommands.play", FACPlay, "play") { AllowServer = false, HelpText = "Play is used for the minigames!" });
             Commands.ChatCommands.Add(new Command("facommands.end", FACEnd, "end") { AllowServer = false, HelpText = "End is used for the minigames!" });
             Commands.ChatCommands.Add(new Command("facommands.day", FACTimeDay, "day") { AllowServer = false, HelpText = "Sets the server time to day." });
             Commands.ChatCommands.Add(new Command("facommands.night", FACTimeNight, "night") { AllowServer = false, HelpText = "Sets the server time to night." });
-            Commands.ChatCommands.Add(new Command("facommands.play", FACGames, "games") { AllowServer = false, HelpText = "Teleports you to the minigames center!" });
+            Commands.ChatCommands.Add(new Command("facommands.games", FACGames, "games") { AllowServer = false, HelpText = "Teleports you to the minigames center!" });
             Commands.ChatCommands.Add(new Command("facommands.tutorial", FACTutorial, "tutorial") { AllowServer = false, HelpText = "Teleports you to the very important tutorial!" });
             Commands.ChatCommands.Add(new Command("facommands.bank", FACBB, "bb") { AllowServer = false, HelpText = "Shows you your current bank balance." });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACHistory, "h") { AllowServer = false, HelpText = "Short command for /history" });
