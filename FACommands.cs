@@ -226,6 +226,7 @@ namespace FACommands
         private void OnInitialize(EventArgs args)
         {
             Commands.ChatCommands.Add(new Command("facommands.reload", Reload_Config, "facreload") { AllowServer = true, HelpText = "Reloads FACommands cooldown config file." });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACAFK, "afkw") { AllowServer = false, HelpText = "Warps you to the AFK spot!" });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACDungeonReset, "dungeonreset") { AllowServer = false, HelpText = "Reset command for Dungeon." });
             Commands.ChatCommands.Add(new Command("facommands.spleef", FACSpleefReset, "spleefreset") { AllowServer = false, HelpText = "Reset command for the Spleef minigame!" });
             Commands.ChatCommands.Add(new Command("facommands.play", FACPlay, "play") { AllowServer = false, HelpText = "Play is used for the minigames!" });
@@ -263,6 +264,13 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { AllowServer = true, HelpText = "Lists detailed informations about banned players." });
             ReadConfig();
         }
+        #endregion
+
+        #region AFK
+        private void FACAFK(CommandArgs args)
+        {
+                    Commands.HandleCommand(args.Player, "/warp AFK");
+            }
         #endregion
 
         #region Dungeon Reset(CD)
@@ -980,7 +988,7 @@ namespace FACommands
                 return;
             }
             {
-                args.Player.SendInfoMessage("You facepalmed.");
+                args.Player.SendInfoMessage("Well... why not?");
                 TSPlayer.All.SendMessage(string.Format("{0} facepalmed.", args.Player.Name), Color.Chocolate);
                 TShock.Log.Info("{0} facepalmed.", new object[]
                 {
