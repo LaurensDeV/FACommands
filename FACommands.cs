@@ -181,41 +181,9 @@ namespace FACommands
                     {
                         player.disturbCD--;
                     }
-                    if (player.playCD > 0)
-                    {
-                        player.playCD--;
-                    }
-                    if (player.endCD > 0)
-                    {
-                        player.endCD--;
-                    }
-                    if (player.timedayCD > 0)
-                    {
-                        player.timedayCD--;
-                    }
-                    if (player.timenightCD > 0)
-                    {
-                        player.timenightCD--;
-                    }
-                    if (player.gamesCD > 0)
-                    {
-                        player.gamesCD--;
-                    }
-                    if (player.tutorialCD > 0)
-                    {
-                        player.tutorialCD--;
-                    }
                     if (player.bankCD > 0)
                     {
                         player.bankCD--;
-                    }
-                    if (player.dungeonresetCD > 0)
-                    {
-                        player.dungeonresetCD--;
-                    }
-                    if (player.spleefresetCD > 0)
-                    {
-                        player.spleefresetCD--;
                     }
                 }
             }
@@ -226,15 +194,6 @@ namespace FACommands
         private void OnInitialize(EventArgs args)
         {
             Commands.ChatCommands.Add(new Command("facommands.reload", Reload_Config, "facreload") { AllowServer = true, HelpText = "Reloads FACommands cooldown config file." });
-            // Commands.ChatCommands.Add(new Command("facommands.fun", FACAFK, "afk") { AllowServer = false, HelpText = "Warps you to the AFK spot!" });
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACDungeonReset, "dungeonreset") { AllowServer = false, HelpText = "Reset command for Dungeon." });
-            Commands.ChatCommands.Add(new Command("facommands.spleef", FACSpleefReset, "spleefreset") { AllowServer = false, HelpText = "Reset command for the Spleef minigame!" });
-            Commands.ChatCommands.Add(new Command("facommands.play", FACPlay, "play") { AllowServer = false, HelpText = "Play is used for the minigames!" });
-            Commands.ChatCommands.Add(new Command("facommands.end", FACEnd, "end") { AllowServer = false, HelpText = "End is used for the minigames!" });
-            Commands.ChatCommands.Add(new Command("facommands.day", FACTimeDay, "day") { AllowServer = false, HelpText = "Sets the server time to day." });
-            Commands.ChatCommands.Add(new Command("facommands.night", FACTimeNight, "night") { AllowServer = false, HelpText = "Sets the server time to night." });
-            Commands.ChatCommands.Add(new Command("facommands.games", FACGames, "games") { AllowServer = false, HelpText = "Teleports you to the minigames center!" });
-            Commands.ChatCommands.Add(new Command("facommands.tutorial", FACTutorial, "tutorial") { AllowServer = false, HelpText = "Teleports you to the very important tutorial!" });
             Commands.ChatCommands.Add(new Command("facommands.bank", FACBB, "bb") { AllowServer = false, HelpText = "Shows you your current bank balance." });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACHistory, "h") { AllowServer = false, HelpText = "Short command for /history" });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACClear, "ca") { AllowServer = true, HelpText = "Short command for clearing up items and projectiles." });
@@ -253,7 +212,7 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.fun", FACHug, "hug") { AllowServer = false, HelpText = "Awwwhhh how lovely!" });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACLick, "lick") { AllowServer = false, HelpText = "Ugh... are you serious?!" });
             Commands.ChatCommands.Add(new Command("facommands.disturb", FACDisturb, "disturb") { AllowServer = false, HelpText = "They will catch you with theyr dusty sticks!" });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACPalm, "facepalm") { AllowServer = false, HelpText = "Perform a facepalm." });
+            Commands.ChatCommands.Add(new Command("facommands.fun", FACPalm, "facepalm") { AllowServer = false, HelpText = "Perform a facepalm." });           
             Commands.ChatCommands.Add(new Command("facommands.fun", FACPlant, "faceplant") { AllowServer = false, HelpText = "Are you crazy?!" });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACLove, "love") { AllowServer = false, HelpText = "hum... this must be true love..." });
             Commands.ChatCommands.Add(new Command("facommands.fun", FACBaby, "baby") { AllowServer = false, HelpText = "uhh wat?! woah wait! Dude! You will pay forever!" });
@@ -261,193 +220,8 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.fun", FACSlap, "slapall") { AllowServer = false, HelpText = "Dusty sticks incomming!" });
             Commands.ChatCommands.Add(new Command("facommands.gift", FACGift, "gift") { AllowServer = false, HelpText = "If they were good!" });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACUI, "uinfo") { AllowServer = true, HelpText = "Lists detailed informations about players." });
-            // Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { AllowServer = true, HelpText = "Lists detailed informations about banned players." });
+            Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { AllowServer = true, HelpText = "Lists detailed informations about banned players." });
             ReadConfig();
-        }
-        #endregion
-
-        #region AFK
-         private void FACAFK(CommandArgs args)
-         {
-         Commands.HandleCommand(args.Player, "/warp AFK");
-          }
-        #endregion
-
-        #region Dungeon Reset(CD)
-        private void FACDungeonReset(CommandArgs args)
-        {
-            var player = Playerlist[args.Player.Index];
-            if (player.dungeonresetCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
-            else
-            {
-                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.dungeonresetCD));
-                return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
-            Commands.HandleCommand(args.Player, "//schematic load Dungeon");
-            Commands.HandleCommand(args.Player, "//region Dungeon");
-            Commands.HandleCommand(args.Player, "//paste");
-            TSPlayer.All.SendMessage("[Dungeon] has been reseted! </warp Dungeon>", Color.DeepPink);
-            if (!args.Player.Group.HasPermission("facommands.nocd"))
-            {
-                player.dungeonresetCD = config.dungeonresetCD;
-            }
-        }
-        #endregion
-
-        #region Spleef Reset(CD)
-        private void FACSpleefReset(CommandArgs args)
-        {
-            var player = Playerlist[args.Player.Index];
-            if (player.spleefresetCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
-            else
-            {
-                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.spleefresetCD));
-                return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
-            Commands.HandleCommand(args.Player, "//schematic load Spleef");
-            Commands.HandleCommand(args.Player, "//region Spleef");
-            Commands.HandleCommand(args.Player, "//paste");
-            TSPlayer.All.SendMessage("[Spleef] has been reseted! </warp Spleef> to play!", Color.DeepPink);
-            if (!args.Player.Group.HasPermission("facommands.nocd"))
-            {
-                player.spleefresetCD = config.spleefresetCD;
-            }
-        }
-        #endregion
-
-        #region Play/End(CD)
-        private void FACPlay(CommandArgs args)
-        {
-            var player = Playerlist[args.Player.Index];
-            if (player.playCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
-            else
-            {
-                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.playCD));
-                return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
-            Commands.HandleCommand(args.Player, "/invsee BOT");
-            if (!args.Player.Group.HasPermission("facommands.nocd"))
-            {
-                player.playCD = config.playCD;
-            }
-        }
-
-        private void FACEnd(CommandArgs args)
-        {
-            var player = Playerlist[args.Player.Index];
-            if (player.endCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
-            else
-            {
-                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.endCD));
-                return;
-            }
-            Commands.HandleCommand(args.Player, "/invsee");
-            if (!args.Player.Group.HasPermission("facommands.nocd"))
-            {
-                player.endCD = config.endCD;
-            }
-        }
-        #endregion
-
-        #region Time(CD)
-        private void FACTimeDay(CommandArgs args)
-        {
-            var player = Playerlist[args.Player.Index];
-            if (player.timedayCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
-            else
-            {
-                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.timedayCD));
-                return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
-            Commands.HandleCommand(args.Player, "/time day");
-            if (!args.Player.Group.HasPermission("facommands.nocd"))
-            {
-                player.timedayCD = config.timedayCD;
-            }
-        }
-
-        private void FACTimeNight(CommandArgs args)
-        {
-            var player = Playerlist[args.Player.Index];
-            if (player.timenightCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
-            else
-            {
-                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.timenightCD));
-                return;
-            }
-            Commands.HandleCommand(args.Player, "/time night");
-            if (!args.Player.Group.HasPermission("facommands.nocd"))
-            {
-                player.timenightCD = config.timenightCD;
-            }
-        }
-        #endregion
-
-        #region Games(CD)
-        private void FACGames(CommandArgs args)
-        {
-            var player = Playerlist[args.Player.Index];
-            if (player.gamesCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
-            else
-            {
-                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.gamesCD));
-                return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
-            Commands.HandleCommand(args.Player, "/warp Games");
-            if (!args.Player.Group.HasPermission("facommands.nocd"))
-            {
-                player.gamesCD = config.gamesCD;
-            }
-        }
-        #endregion
-
-        #region Tutorial(CD)
-        private void FACTutorial(CommandArgs args)
-        {
-            var player = Playerlist[args.Player.Index];
-            if (player.tutorialCD == 0 || args.Player.Group.HasPermission("facommands.nocd")) ;
-            else
-            {
-                args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.tutorialCD));
-                return;
-            }
-            {
-                foreach (TSPlayer ts in TShock.Players)
-                {
-                    if (ts == null)
-                        continue;
-                }
-                Commands.HandleCommand(args.Player, "/warp Tutorial");
-                if (!args.Player.Group.HasPermission("facommands.nocd"))
-                {
-                    player.tutorialCD = config.tutorialCD;
-                }
-            }
         }
         #endregion
 
@@ -461,11 +235,6 @@ namespace FACommands
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.bankCD));
                 return;
             }
-                foreach (TSPlayer ts in TShock.Players)
-                {
-                    if (ts == null)
-                        continue;
-                }
                 Commands.HandleCommand(args.Player, "/bank bal");
                 if (!args.Player.Group.HasPermission("facommands.nocd"))
                 {
@@ -519,11 +288,6 @@ namespace FACommands
             {
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.moreCD));
                 return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
             }
             {
                 if (args.Parameters.Count > 0 && args.Parameters[0].ToLower() == "all")
@@ -623,11 +387,6 @@ namespace FACommands
                     args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.slayCD));
                     return;
                 }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
             {
                     if (args.Parameters.Count < 2)
                     {
@@ -675,11 +434,6 @@ namespace FACommands
             {
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.fartCD));
                 return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
             }
             {
                 if (args.Parameters.Count != 1)
@@ -742,11 +496,6 @@ namespace FACommands
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.tickleCD));
                 return;
             }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
             {
                 if (args.Parameters.Count != 1)
                 {
@@ -798,11 +547,6 @@ namespace FACommands
             {
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.pokeCD));
                 return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
             }
             {
                 if (args.Parameters.Count != 1)
@@ -860,11 +604,6 @@ namespace FACommands
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.spokeCD));
                 return;
             }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
             {
                 if (args.Parameters.Count != 1)
                 {
@@ -920,11 +659,6 @@ namespace FACommands
             {
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.hugCD));
                 return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
             }
             {
                 if (args.Parameters.Count != 1)
@@ -984,11 +718,6 @@ namespace FACommands
             {
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.lickCD));
                 return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
             }
             {
                 if (args.Parameters.Count != 1)
@@ -1060,11 +789,6 @@ namespace FACommands
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.facepalmCD));
                 return;
             }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
             {
                 args.Player.SendInfoMessage("Well... why not?");
                 TSPlayer.All.SendMessage(string.Format("{0} facepalmed.", args.Player.Name), Color.Chocolate);
@@ -1089,11 +813,6 @@ namespace FACommands
             {
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.kissCD));
                 return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
             }
             {
                 if (args.Parameters.Count != 1)
@@ -1165,11 +884,6 @@ namespace FACommands
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.babyCD));
                 return;
             }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
             {
                 if (args.Parameters.Count != 1)
                 {
@@ -1226,11 +940,6 @@ namespace FACommands
             {
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.stabCD));
                 return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
             }
             {
                 if (args.Parameters.Count != 1)
@@ -1291,11 +1000,6 @@ namespace FACommands
             {
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.loveCD));
                 return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
             }
             {
                 if (args.Parameters.Count != 1)
@@ -1367,11 +1071,6 @@ namespace FACommands
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.faceplantCD));
                 return;
             }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
             {
                 if (!args.Player.RealPlayer)
                 {
@@ -1400,11 +1099,6 @@ namespace FACommands
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.slapallCD));
                 return;
             }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
             {
                 if (!args.Player.RealPlayer)
                 {
@@ -1429,11 +1123,6 @@ namespace FACommands
             {
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.giftCD));
                 return;
-            }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
             }
             {
                 if (args.Parameters.Count != 1)
@@ -1506,11 +1195,6 @@ namespace FACommands
                 args.Player.SendErrorMessage("This command is on cooldown for {0} seconds.", (player.disturbCD));
                 return;
             }
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
             {
                 if (args.Parameters.Count != 1)
                 {
@@ -1570,11 +1254,6 @@ namespace FACommands
         #region User Info
         private void FACUI(CommandArgs args)
         {
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
             if (args.Parameters.Count == 1)
             {
                 string text = string.Join(" ", args.Parameters);
@@ -1622,11 +1301,6 @@ namespace FACommands
         #region Ban Info
         private void FACBI(CommandArgs args)
          {
-            foreach (TSPlayer ts in TShock.Players)
-            {
-                if (ts == null)
-                    continue;
-            }
             if (args.Parameters.Count != 1)
              {
               args.Player.SendErrorMessage("Invalid syntax: /baninfo \"Player Name\"");
@@ -1740,15 +1414,7 @@ namespace FACommands
             public int slapallCD = 120;
             public int giftCD = 300;
             public int disturbCD = 120;
-            public int playCD = 30;
-            public int endCD = 30;
-            public int timedayCD = 1800;
-            public int timenightCD = 1800;
-            public int gamesCD = 60;
-            public int tutorialCD = 60;
             public int bankCD = 10;
-            public int dungeonresetCD = 3600;
-            public int spleefresetCD = 180;
         }
         #endregion
 
