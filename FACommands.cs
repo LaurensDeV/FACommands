@@ -52,7 +52,7 @@ namespace FACommands
         {
             get
             {
-                return new Version(1, 2, 2);
+                return new Version(1, 2, 3);
             }
         }
 
@@ -226,7 +226,7 @@ namespace FACommands
         private void OnInitialize(EventArgs args)
         {
             Commands.ChatCommands.Add(new Command("facommands.reload", Reload_Config, "facreload") { AllowServer = true, HelpText = "Reloads FACommands cooldown config file." });
-            Commands.ChatCommands.Add(new Command("facommands.fun", FACAFK, "afkw") { AllowServer = false, HelpText = "Warps you to the AFK spot!" });
+            // Commands.ChatCommands.Add(new Command("facommands.fun", FACAFK, "afkw") { AllowServer = false, HelpText = "Warps you to the AFK spot!" });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACDungeonReset, "dungeonreset") { AllowServer = false, HelpText = "Reset command for Dungeon." });
             Commands.ChatCommands.Add(new Command("facommands.spleef", FACSpleefReset, "spleefreset") { AllowServer = false, HelpText = "Reset command for the Spleef minigame!" });
             Commands.ChatCommands.Add(new Command("facommands.play", FACPlay, "play") { AllowServer = false, HelpText = "Play is used for the minigames!" });
@@ -261,16 +261,16 @@ namespace FACommands
             Commands.ChatCommands.Add(new Command("facommands.fun", FACSlap, "slapall") { AllowServer = false, HelpText = "Dusty sticks incomming!" });
             Commands.ChatCommands.Add(new Command("facommands.gift", FACGift, "gift") { AllowServer = false, HelpText = "If they were good!" });
             Commands.ChatCommands.Add(new Command("facommands.staff", FACUI, "uinfo") { AllowServer = true, HelpText = "Lists detailed informations about players." });
-            Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { AllowServer = true, HelpText = "Lists detailed informations about banned players." });
+            // Commands.ChatCommands.Add(new Command("facommands.staff", FACBI, "binfo") { AllowServer = true, HelpText = "Lists detailed informations about banned players." });
             ReadConfig();
         }
         #endregion
 
-        #region AFK
-        private void FACAFK(CommandArgs args)
-        {
-                    Commands.HandleCommand(args.Player, "/warp AFK");
-            }
+        #region AFK >>>DISABLED<<<
+        // private void FACAFK(CommandArgs args)
+        // {
+        // Commands.HandleCommand(args.Player, "/warp AFK");
+        //  }
         #endregion
 
         #region Dungeon Reset(CD)
@@ -1496,43 +1496,43 @@ namespace FACommands
         }
         #endregion
 
-        #region Ban Info
-        private void FACBI(CommandArgs args)
-        {
-
-            if (args.Parameters.Count != 1)
-            {
-                args.Player.SendErrorMessage("Invalid syntax: /baninfo \"Player Name\"");
-            }
-            else
-            {
-                string text = args.Parameters[0];
-                Ban banByName = TShock.Bans.GetBanByName(text, true);
-                if (banByName == null)
-                {
-                    args.Player.SendErrorMessage("No bans by this name were found.");
-                }
-                else
-                {
-                    args.Player.SendInfoMessage(string.Concat(new string[]
-                    {
-                        "Account name: ",
-                        banByName.Name,
-                        " (",
-                        banByName.IP,
-                        ")"
-                    }));
-                    args.Player.SendInfoMessage("Date banned: " + banByName.Date);
-                    if (banByName.Expiration != "")
-                    {
-                        args.Player.SendInfoMessage("Expiration date: " + banByName.Expiration);
-                    }
-                    args.Player.SendInfoMessage("Banning user: " + banByName.BanningUser);
-                    args.Player.SendInfoMessage("Reason: " + banByName.Reason);
-                }
-            }
-        }
-        #endregion
+        #region Ban Info >>>DISABLED<<<
+        //private void FACBI(CommandArgs args)
+        // {
+        // 
+        //     if (args.Parameters.Count != 1)
+        //     {
+        //      args.Player.SendErrorMessage("Invalid syntax: /baninfo \"Player Name\"");
+        //      }
+        //     else
+        //     {
+        //         string text = args.Parameters[0];
+        //         Ban banByName = TShock.Bans.GetBanByName(text, true);
+        //         if (banByName == null)
+        //         {
+        //          args.Player.SendErrorMessage("No bans by this name were found.");
+        //      }
+        //         else
+        //         {
+        //          args.Player.SendInfoMessage(string.Concat(new string[]
+        //             {
+        //                 "Account name: ",
+        //              banByName.Name,
+        //                 " (",
+        //          banByName.IP,
+        //                 ")"
+        //                  }));
+        //          args.Player.SendInfoMessage("Date banned: " + banByName.Date);
+        //             if (banByName.Expiration != "")
+        //             {
+        //          args.Player.SendInfoMessage("Expiration date: " + banByName.Expiration);
+        //             }
+        //             args.Player.SendInfoMessage("Banning user: " + banByName.BanningUser);
+        //            args.Player.SendInfoMessage("Reason: " + banByName.Reason);
+        //         }
+        //     }
+        // }
+#endregion
 
         #region Create Config
         private void CreateConfig()
