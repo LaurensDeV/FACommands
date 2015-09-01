@@ -11,7 +11,9 @@ using TShockAPI;
 #endregion
 
 namespace FACommands
-{ public class FACPlayer {
+{
+    public class FACPlayer
+    {
         public int Index { get; set; }
         public TSPlayer TSPlayer { get { return TShock.Players[Index]; } }
         public string ranklist { get; set; }
@@ -31,7 +33,9 @@ namespace FACommands
         public int faceplantCD { get; set; }
         public int slapallCD { get; set; }
         public int giftCD { get; set; }
-        public int disturbCD { get; set; }       
-        public int bankCD { get; set; }      
+        public int disturbCD { get; set; }
+        public int bankCD { get; set; }
         public FACPlayer(int index)
-        { this.Index = index; } } }
+        { this.Index = index; }
+    }
+}
