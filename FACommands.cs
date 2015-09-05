@@ -177,7 +177,6 @@ namespace FACommands
         private void FACClear(CommandArgs args)
         {
             Commands.HandleCommand(args.Player, "/clear item 100000");
-            Commands.HandleCommand(args.Player, "/clear projectile 100000");
         }
         #endregion
 
