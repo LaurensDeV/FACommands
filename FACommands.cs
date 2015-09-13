@@ -14,7 +14,7 @@ using TShockAPI.DB;
 
 namespace FACommands
 {
-    [ApiVersion(1, 21)]
+    [ApiVersion(1, 22)]
     public class FACommands : TerrariaPlugin
     {
 
@@ -34,7 +34,7 @@ namespace FACommands
         public override string Description { get { return "FACommands"; } }
 
         public override Version Version
-        { get { return new Version(1, 2, 6); } }
+        { get { return new Version(1, 2, 7); } }
 
         public FACommands(Main game) : base(game) { base.Order = 1; }
         #endregion
@@ -177,6 +177,7 @@ namespace FACommands
         private void FACClear(CommandArgs args)
         {
             Commands.HandleCommand(args.Player, "/clear item 100000");
+            Commands.HandleCommand(args.Player, "/clear projectile 100000");
         }
         #endregion
 
