@@ -28,7 +28,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Reference\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\tShock API\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -37,10 +37,10 @@
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="TerrariaServer">
-      <HintPath>..\Reference\TerrariaServer.exe</HintPath>
+      <HintPath>..\tShock API\TerrariaServer.exe</HintPath>
     </Reference>
     <Reference Include="TShockAPI">
-      <HintPath>..\Reference\TShockAPI.dll</HintPath>
+      <HintPath>..\tShock API\TShockAPI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
