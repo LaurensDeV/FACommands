@@ -722,7 +722,7 @@ namespace FACommands
                         TSPlayer tSPlayer = list[0];
                         tSPlayer.SetBuff(92, 3600, false);
                         tSPlayer.SetBuff(103, 3600, true);
-                        args.Player.SendInfoMessage("... does it made you happy? I hope it's your true love... otherwise much fun with the alimony! :D", new object[]
+                        args.Player.SendInfoMessage("... did it make you happy? I hope it's your true love... otherwise much fun with the alimony! :D", new object[]
                             { tSPlayer.Name });
                         TSPlayer.All.SendMessage(string.Format("{0} tried to make a baby (grinch) with {1}! awwhhh look! It's soooo cute! <3", args.Player.Name, tSPlayer.Name), Color.Firebrick);
                         TShock.Log.Info("{0} tried to make a baby (grinch) with {1}!", new object[]
